@@ -11,5 +11,13 @@ angular.module('taskminder.task_table',['ngRoute', 'ui.bootstrap'])
         });
     }])
     .controller("TaskTableCtrl",['$scope',function($scope){
-
+        $scope.tasks = {
+            task1:
+                { title: "First Test",
+                  course_code : 'BU472',
+                    type:'assignment',
+                    due_date : 'Soon',
+                    due_date_time : '4',
+                    completed : true
+        }};
     }]);

@@ -30,6 +30,19 @@
                             <th>Completed</th>
                         </tr>
                     </thead>
+                    <tbody>
+                        <tr ng-repeat="task in tasks" class="{{ task.type }}">
+                            <td>{{ task.course_code }}</td>
+                            <td>{{ task.title }}</td>
+                            <td>{{ task.due_date }}</td>
+                            <td>{{ task.due_date_time }}</td>
+                            <td>
+                                <input class="checkbox" type="checkbox"  aria-label="..." ng-checked="task.completed">
+                            </td>
+
+                        </tr>
+                    </tbody>
+
                 </table>
             </div>
         </div>
