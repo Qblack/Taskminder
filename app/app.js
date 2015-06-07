@@ -8,7 +8,9 @@ angular.module('taskminder',[
     'ui.bootstrap',
     'ngCookies',
     'ngResource',
+    'taskminder.task_table',
     'taskminder.home'
+
 ]).config(['$routeProvider', function($routeProvider) {
     $routeProvider.otherwise({redirectTo: '/'});
 
