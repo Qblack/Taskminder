@@ -1,0 +1,77 @@
+<div ng-controller="AddTaskCtrl">
+
+    <div class="container container-fluid" >
+        <div class="row">
+            <div class="col-md-6">
+                <h1>Please create a new task</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="title">Task Title</label>
+                                <input type="text" class="form-control" id="title" ng-model="task.title" placeholder="Task Title" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="course">What course does this task belong to?</label>
+                                <select id ="course" multiple class="form-control" ng-model="task.course" required size="3">
+                                    <option ng-repeat="course in courses" value="{{ course.id }}">{{ course }}</option>
+                                </select>
+                                Course not there? <a href="/#/add_course">Add one.</a>
+                            </div>
+                            <div class="form-group">
+                                <label for="type">What kind of task?</label>'
+                                <select id =  "type" multiple class="form-control" ng-model="task.type" required size="3">
+                                    <option ng-repeat="type in types" value="{{ type.id }}">{{ type }}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="pages">What are you to read?</label>
+                                <input type="text" class="form-control" id="pages" ng-model="task.pages" placeholder="Reading Contents" required>
+                            </div>
+                            <label for="due_date">When do you need to do this by?</label>
+
+                            <div class="input-group">
+                                <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt"
+                                       is-open="opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions"
+                                        ng-required="false" close-text="Close" id="due_date"/>
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </div>
+                            <div class="form-group">
+                                <label for="due_time">Time to do by?</label>
+                                <timepicker id="due_time" ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
+                            </div>
+                            <div class="form-group">
+                                <label for="description">What do you have to do?</label>
+                                <textarea class="form-control" id="description" ng-model="task.description" placeholder="Description" rows="4"></textarea>
+                            </div>
+                            <label for="weight">How mush is this worth?</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="weight" ng-model="task.weight" placeholder="Weight">
+                                <span class="input-group-addon">%</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="url">Url for more info?</label>
+                                <input type="url" class="form-control" id="url" ng-model="task.url" placeholder="Url">
+                            </div>
+                            <div class="form-group">
+                                <label for="group">It's dangerous to go alone do you get to take a friend?</label>
+                                <input type="checkbox" class="form-control" id="group" ng-model="task.group" value="false" placeholder="Group Project?">
+                            </div>
+
+
+                            <button type="submit" class="btn btn-default pull-right" ng-click="add(task)">Create Task</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
