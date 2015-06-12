@@ -1,0 +1,41 @@
+<div ng-controller="AddSchoolCtrl">
+
+    <div class="container container-fluid" >
+        <div class="row">
+            <div class="col-md-6">
+                <h1>Have a new school to register?</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="name">What is the name of the school?</label>
+                                <input type="text" class="form-control" id="name" ng-model="school.name" placeholder="{{fake_school}}" required autofocus>
+                            </div>
+                            <div class="form-group">
+                                <label for="short_form">Does the school have a short form?</label>
+                                <input type="text" class="form-control" id="short_form" ng-model="school.short_form" placeholder="Shorty?">
+                            </div>
+
+                            <button type="submit" class="btn btn-default pull-right" ng-click="add(school)">Register school</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="well scrollable nav">
+                    <div ng-repeat="existing in existing_schools">
+                        <p>{{existing}}</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
