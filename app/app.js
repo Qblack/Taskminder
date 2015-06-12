@@ -13,7 +13,9 @@ angular.module('taskminder',[
     'taskminder.navbar',
     'taskminder.signup',
     'taskminder.addTask',
-    'taskminder.addSchool'
+    'taskminder.addSchool',
+    'taskminder.addCourse'
+
 
 ]).config(['$routeProvider', function($routeProvider) {
     $routeProvider.otherwise({redirectTo: '/'});
