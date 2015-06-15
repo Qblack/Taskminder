@@ -11,5 +11,5 @@
     background : darkcyan;
 }
 
-.scrollable.nav {height:50%; width:100%;}
+.scrollable.nav {height:300px; width:100%;}
 .scrollable.nav {overflow:hidden; overflow-y:scroll;}

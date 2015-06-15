@@ -19,24 +19,24 @@
                             <div class="form-group">
                                 <label for="course">What course does this task belong to?</label>
                                 <select id ="course" multiple class="form-control" ng-model="task.course" required size="3">
-                                    <option ng-repeat="course in courses" value="{{ course.id }}">{{ course }}</option>
+                                    <option ng-repeat="course in courses" value="{{ course.id }}">{{ course.code }}</option>
                                 </select>
                                 Course not there? <a href="/#/add_course">Add one.</a>
                             </div>
                             <div class="form-group">
                                 <label for="type">What kind of task?</label>'
                                 <select id =  "type" multiple class="form-control" ng-model="task.type" required size="3">
-                                    <option ng-repeat="type in types" value="{{ type.id }}">{{ type }}</option>
+                                    <option ng-repeat="type in types" value="{{ type }}">{{ type }}</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="pages">What are you to read?</label>
-                                <input type="text" class="form-control" id="pages" ng-model="task.pages" placeholder="Reading Contents" required>
+                                <input type="text" class="form-control" id="pages" ng-model="task.pages" placeholder="Reading Contents">
                             </div>
                             <label for="due_date">When do you need to do this by?</label>
 
                             <div class="input-group">
-                                <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt"
+                                <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="task.due_date"
                                        is-open="opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions"
                                         ng-required="false" close-text="Close" id="due_date"/>
                                 <span class="input-group-btn">
@@ -45,7 +45,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="due_time">Time to do by?</label>
-                                <timepicker id="due_time" ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
+                                <timepicker id="due_time" ng-model="task.due_time" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"
+                                        ></timepicker>
                             </div>
                             <div class="form-group">
                                 <label for="description">What do you have to do?</label>

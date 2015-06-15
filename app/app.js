@@ -3,13 +3,14 @@
  */
 'use strict';
 
-    'taskminder.Courses',
 var taskminder = angular.module('taskminder',[
     'ngRoute',
     'ui.bootstrap',
     'ngCookies',
     'ngResource',
+    'taskminder.Tasks',
     'taskminder.Schools',
+    'taskminder.Courses',
     'taskminder.task_table',
     'taskminder.home',
     'taskminder.navbar',

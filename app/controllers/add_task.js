@@ -12,23 +12,28 @@ angular.module('taskminder.addTask',[])
         });
 
     }])
-    .controller('AddTaskCtrl',['$scope',function($scope){
+    .controller('AddTaskCtrl',['$scope','Tasks',function($scope,Tasks){
         $scope.task = {};
-        $scope.courses = ['BU440','BU472','BU491']; //TODO get actual courses
+        $scope.courses = [{id:1,code:'BU440'},{id:2,code:'BU472'},{id:3,code:'BU491'}]; //TODO get actual courses
         $scope.types = ['reading','assignment','test']; // TODO get types
 
         $scope.add = function(task){
             console.log(task);
+            task.course_id = task.course[0];
+            task.type = task.type[0];
+            task.complete = false;
+
             $scope.task = task;
+            Tasks.createTask(1,task);
         };
 
         $scope.today = function() {
-            $scope.dt = new Date();
+            $scope.task.due_date = new Date();
         };
         $scope.today();
 
         $scope.clear = function () {
-            $scope.dt = null;
+            $scope.task.due_date = null;
         };
 
         // Disable weekend selection
@@ -84,11 +89,10 @@ angular.module('taskminder.addTask',[])
                     }
                 }
             }
-
             return '';
         };
 
-        $scope.mytime = new Date();
+        $scope.task.due_time = new Date();
         $scope.hstep = 1;
         $scope.mstep = 15;
 
@@ -99,7 +103,7 @@ angular.module('taskminder.addTask',[])
 
         $scope.ismeridian = true;
         $scope.changed = function () {
-            console.log('Time changed to: ' + $scope.mytime);
+            console.log('Time changed to: ' + $scope.task.due_time );
         };
 
     }]);
