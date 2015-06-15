@@ -3,7 +3,7 @@
  */
 'use strict';
 
-angular.module('taskminder',[
+    'taskminder.Courses',
 var taskminder = angular.module('taskminder',[
     'ngRoute',
     'ui.bootstrap',

@@ -10,6 +10,11 @@
             <div class="col-md-6 col-md-offset-3">
                 <div class="panel panel-default">
                     <div class="panel-body">
+                        <div ng-show="success" class="alert alert-dismissible alert-success" role="alert">
+                            Your course has been added
+                            <button ng-show="success" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+
                         <form>
                             <div class="form-group">
                                 <label for="name">What course will you be taking?</label>
@@ -21,7 +26,10 @@
                             </div>
                             <div class="form-group">
                                 <label for="school">What school are you taking the course from?</label>
-                                <input type="text" class="form-control" id="school" ng-model="course.school" placeholder="School" required>
+                                <select id ="school" multiple class="form-control" ng-model="task.school" required>
+                                    <option ng-repeat="school in schools" value="{{ school.id }}">{{ school.name }}</option>
+                                </select>
+                                School not there? <a href="/#/add_school">Add it.</a>
                             </div>
                             <div class="form-group">
                                 <label for="code">What is the course code?</label>
@@ -44,7 +52,7 @@
                                 <input type="text" class="form-control" id="website" ng-model="course.website" placeholder="www.imaurl.com">
                             </div>
 
-                            <button type="submit" class="btn btn-default pull-right" ng-click="add(course)">Register school</button>
+                            <button type="submit" class="btn btn-default pull-right" ng-click="add(course)">Add Course</button>
                         </form>
                     </div>
                 </div>

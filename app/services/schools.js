@@ -14,7 +14,6 @@ angular.module('taskminder.Schools',[]).
                 'delete': {method: 'DELETE'},
                 'update': {method: 'PUT'},
                 'create': {method: 'POST'}
-                //'query':  {method:'GET', isArray:true}
             }
         );
 

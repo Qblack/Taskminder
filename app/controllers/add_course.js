@@ -11,13 +11,32 @@ angular.module('taskminder.addCourse',[])
         });
 
     }])
-    .controller('AddCourseCtrl',['$scope',function($scope){
+    .controller('AddCourseCtrl',['$scope','Schools','Courses',function($scope,Schools,Courses){
         $scope.course = {};
-        $scope.add = function(course){};
+        $scope.success = false;
 
-        //TODO get existing courses
-        //TODO get existing schools
-        
+        $scope.add = function(course){
+            Courses.createCourse(course).$promise.then(
+                function(courseId) {
+                    console.log(courseId);
+                    $scope.success = true;
+                });
+        };
+
+        $scope.schools = Schools.getSchools();
+        $scope.schools.$promise.then(
+            function(schools) {
+                $scope.existing_schools = schools;
+            }
+        );
+
+        $scope.existing_courses = Courses.getCourses();
+        $scope.existing_courses.$promise.then(
+            function(courses) {
+                $scope.existing_schools = courses;
+            }
+        );
+
 
         $scope.getFakeCourse = function () {
             var fake_courses = [
