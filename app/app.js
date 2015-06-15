@@ -4,10 +4,12 @@
 'use strict';
 
 angular.module('taskminder',[
+var taskminder = angular.module('taskminder',[
     'ngRoute',
     'ui.bootstrap',
     'ngCookies',
     'ngResource',
+    'taskminder.Schools',
     'taskminder.task_table',
     'taskminder.home',
     'taskminder.navbar',
@@ -17,9 +19,14 @@ angular.module('taskminder',[
     'taskminder.addCourse'
 
 
+
 ]).config(['$routeProvider', function($routeProvider) {
     $routeProvider.otherwise({redirectTo: '/'});
 
+}]).config(['$resourceProvider', function($resourceProvider) {
+    // Don't strip trailing slashes from calculated URLs
+    $resourceProvider.defaults.stripTrailingSlashes = false;
 }]);
 
 
+taskminder.constant("APIURL", "http://127.0.0.1:1337");

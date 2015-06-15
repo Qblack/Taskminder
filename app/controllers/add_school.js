@@ -10,10 +10,44 @@ angular.module('taskminder.addSchool',[])
         });
 
     }])
-    .controller('AddSchoolCtrl',['$scope',function($scope){
+    .controller('AddSchoolCtrl',['$scope','Schools',function($scope,Schools){
         $scope.school = {};
-        $scope.add = function(school){};
-        $scope.existing_schools = ['Starwars Academy', 'Owl School', 'Bubbles','School1','SDCI','WLU','Another School', 'Yet Another School']; //TODO get existing schools
+        $scope.success = false;
+
+
+        $scope.existing_schools = [{name:'No existing schools'}];
+        $scope.loadSchools = function(){
+            $scope.existing_schools = Schools.getSchools();
+
+            $scope.existing_schools.$promise.then(
+                function(schools) {
+                    console.log(schools);
+                    if(schools.length!=0){
+                        $scope.existing_schools = schools;
+                    }else{
+                        $scope.existing_schools = [{name:'No existing schools'}];
+                    }
+                },
+                function(error){
+                    $scope.existing_schools = [{name:'Trouble finding existing schools'}]
+                }
+            );
+        };
+
+        $scope.loadSchools();
+        $scope.add = function(school){
+            Schools.createSchool(school).$promise.then(
+                function(course){
+                    console.log(course.id);
+                    $scope.loadSchools();
+                    $scope.success = true;
+                },
+                function(error){
+                    console.log(error);
+                }
+            );
+        };
+
 
         $scope.getFakeSchool = function () {
             var fake_schools = [

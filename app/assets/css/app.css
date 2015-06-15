@@ -11,8 +11,5 @@
     background : darkcyan;
 }
 
-.scrollable {
-    background-color: cadetblue;
-}
 .scrollable.nav {height:50%; width:100%;}
 .scrollable.nav {overflow:hidden; overflow-y:scroll;}
