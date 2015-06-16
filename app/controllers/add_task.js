@@ -12,19 +12,28 @@ angular.module('taskminder.addTask',[])
         });
 
     }])
-    .controller('AddTaskCtrl',['$scope','Tasks',function($scope,Tasks){
+    .controller('AddTaskCtrl',['$scope','Tasks','Schools','Courses' , 'TYPES','$cookies',function($scope,Tasks, Schools, Courses, TYPES, $cookies){
         $scope.task = {};
-        $scope.courses = [{id:1,code:'BU440'},{id:2,code:'BU472'},{id:3,code:'BU491'}]; //TODO get actual courses
-        $scope.types = ['reading','assignment','test']; // TODO get types
+        $scope.user_id = 1;// $cookies.get('user_id');
+        $scope.task.in_class = true;
+
+        //TODO get user's actual courses
+        $scope.courses =  Courses.getCourses();
+        $scope.courses.$promise.then(
+            function(courses) {
+                $scope.courses = courses;
+            }
+        );
+
+        $scope.types = TYPES ;
 
         $scope.add = function(task){
             console.log(task);
             task.course_id = task.course[0];
             task.type = task.type[0];
             task.complete = false;
-
             $scope.task = task;
-            Tasks.createTask(1,task);
+            Tasks.createTask($scope.user_id,task);
         };
 
         $scope.today = function() {
