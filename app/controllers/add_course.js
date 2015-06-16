@@ -33,7 +33,7 @@ angular.module('taskminder.addCourse',[])
         $scope.existing_courses = Courses.getCourses();
         $scope.existing_courses.$promise.then(
             function(courses) {
-                $scope.existing_schools = courses;
+                $scope.existing_courses = courses;
             }
         );
 

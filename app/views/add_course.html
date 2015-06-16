@@ -26,7 +26,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="school">What school are you taking the course from?</label>
-                                <select id ="school" multiple class="form-control" ng-model="task.school" required>
+                                <select id ="school" class="form-control" ng-model="task.school" required>
                                     <option ng-repeat="school in schools" value="{{ school.id }}">{{ school.name }}</option>
                                 </select>
                                 School not there? <a href="/#/add_school">Add it.</a>
