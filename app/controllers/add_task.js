@@ -28,9 +28,7 @@ angular.module('taskminder.addTask',[])
         $scope.types = TYPES ;
 
         $scope.add = function(task){
-            console.log(task);
-            task.course_id = task.course[0];
-            task.type = task.type[0];
+            task.course_id = task.course;
             task.complete = false;
             $scope.task = task;
             Tasks.createTask($scope.user_id,task);
@@ -112,7 +110,6 @@ angular.module('taskminder.addTask',[])
 
         $scope.ismeridian = true;
         $scope.changed = function () {
-            console.log('Time changed to: ' + $scope.task.due_time );
         };
 
     }]);

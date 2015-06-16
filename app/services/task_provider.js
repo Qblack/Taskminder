@@ -11,7 +11,7 @@ angular.module('taskminder.Tasks',[]).
         var Tasks = $resource(APIURL+'/users/:userId/tasks/:id',
                 {userId:'@userId', id:'@id'},
                 {
-                    'get': {method: 'GET'},
+                    'get': {method: 'GET', isArray:true},
                     'delete': {method: 'DELETE'},
                     'update': {method: 'PUT'},
                     'create': {method: 'POST'}
@@ -23,7 +23,7 @@ angular.module('taskminder.Tasks',[]).
                 return Tasks.get({userId:userId});
             };
 
-            service.getTasks = function(userId, taskId){
+            service.getTask = function(userId, taskId){
                 return Tasks.get({userId:userId,id:taskId});
             };
 

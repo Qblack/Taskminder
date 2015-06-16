@@ -11,7 +11,7 @@
                 <button class="btn reading">Toggle Readings</button>
             </div>
             <div class="col-md-3">
-                <button class="btn show-complete">Toggle Completed</button>
+                <button class="btn show-complete" ng-click="toggleShowAll(0)">Toggle Completed</button>
             </div>
         </div>
         <div class="row">
@@ -27,13 +27,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="task in tasks" class="{{ task.type }}">
-                            <td>{{ task.course_code }}</td>
+                        <tr ng-repeat="task in tasks" class="{{ task.type }}" ng-show="task.complete ? show_all : true">
+                            <td>{{ getCourseCode(task.id_course) }}</td>
                             <td>{{ task.title }}</td>
                             <td>{{ task.due_date }}</td>
-                            <td>{{ task.due_date_time }}</td>
+                            <td ng-if="task.in_class">In class</td>
+                            <td ng-if="!task.in_class">{{ task.due_time }}</td>
                             <td>
-                                <input class="checkbox" type="checkbox"  aria-label="..." ng-checked="task.completed">
+                                <input class="checkbox" type="checkbox" ng-model="task.complete" ng-checked="task.complete">
                             </td>
                         </tr>
                     </tbody>
