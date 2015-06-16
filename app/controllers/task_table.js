@@ -14,6 +14,13 @@ angular.module('taskminder.task_table',['ngRoute', 'ui.bootstrap'])
         $scope.show_all = false;
         $scope.user_id = 1;// $cookies.get('user_id');
 
+        //The shows
+        $scope.show = {
+            assignment:true,
+            test:true,
+            reading:true
+        };
+
         $scope.courses = Courses.getCourses();
         $scope.courses.$promise.then(function(courses){
             $scope.courses=courses;
@@ -42,7 +49,20 @@ angular.module('taskminder.task_table',['ngRoute', 'ui.bootstrap'])
 
         $scope.toggleShowAll = function(){
             $scope.show_all = !$scope.show_all;
-            console.log($scope.show_all);
+        };
+        $scope.toggleShowAssignments = function(){
+            $scope.show.assignment = !$scope.show.assignment;
+        };
+        $scope.toggleShowTests = function(){
+            $scope.show.test = !$scope.show.test;
+        };
+        $scope.toggleShowReadings = function(){
+            $scope.show.reading = !$scope.show.reading;
+        };
+
+        $scope.showTask = function(type){
+            var string_type =type.trim().toLowerCase().toString();
+            return $scope.show[string_type];
         }
 
 
