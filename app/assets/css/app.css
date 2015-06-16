@@ -1,14 +1,51 @@
 .assignment{
-    background :darkseagreen ;
+    background :#42bc41 ;
+    color: white;
 }
+.assignment.panel-default > .panel-heading{
+    background-color: #42bc41;
+    color: white;
+}
+
+.assignment.panel-default > .panel-collapse{
+    background-color: #DDD;
+    color: black;
+}
+
 .test{
     background : mediumvioletred;
+    color: white;
 }
+
+.test.panel-default > .panel-heading{
+    background-color: mediumvioletred;
+    color: white;
+}
+
+.test.panel-default > .panel-collapse{
+    background-color: #DDD;
+    color: black;
+}
+
+
 .reading{
     background : deepskyblue;
+    color: white;
 }
+
+.reading.panel-default > .panel-heading{
+    background-color: deepskyblue;
+    color: white;
+}
+
+.reading.panel-default > .panel-collapse{
+    background-color: #DDD;
+    color: black;
+}
+
 .show-complete{
     background : darkcyan;
+    color: white;
 }
 
 .scrollable.nav {height:300px; width:100%;}
