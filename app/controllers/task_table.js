@@ -24,7 +24,6 @@ angular.module('taskminder.task_table',['ngRoute', 'ui.bootstrap'])
         $scope.courses = Courses.getCourses();
         $scope.courses.$promise.then(function(courses){
             $scope.courses=courses;
-            console.log(courses);
         });
 
         $scope.tasks = Tasks.getTasks($scope.user_id);
@@ -38,7 +37,7 @@ angular.module('taskminder.task_table',['ngRoute', 'ui.bootstrap'])
             var i =0;
             var code = '';
             while(found==false){
-                if( course_id = $scope.courses[i].id){
+                if( course_id == $scope.courses[i].id){
                     found =true;
                     code = $scope.courses[i].code;
                 }
