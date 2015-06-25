@@ -64,7 +64,10 @@
                                             {{ task.location }}
                                         </div>
                                         <div class="col-xs-1">
-                                            <input class="center-block checkbox" type="checkbox" ng-model="task.complete" ng-checked="task.complete" ng-click="updateTask(task)">
+                                            <i ng-hide="task.complete" class="fa fa-square-o" ng-click="completeTask(task)"></i>
+                                            <i ng-show="task.complete" class="fa fa-check-square-o" ng-click="completeTask(task)"></i>
+                                            <i class="fa fa-pencil-square-o"></i>
+                                            <i class="fa fa-trash-o"></i>
                                         </div>
                                         <div class="col-xs-1">
                                             <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>

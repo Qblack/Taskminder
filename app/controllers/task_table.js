@@ -3,7 +3,7 @@
  */
 'use strict';
 
-angular.module('taskminder.task_table',['ngRoute', 'ui.bootstrap'])
+angular.module('taskminder.task_table',['ngRoute'])
     .config(['$routeProvider', function($routeProvider){
         $routeProvider.when('/tasks',{
             templateUrl: 'views/task_table.html',
@@ -29,6 +29,7 @@ angular.module('taskminder.task_table',['ngRoute', 'ui.bootstrap'])
         $scope.tasks = Tasks.getTasks($scope.user_id);
         $scope.tasks.$promise.then(function(tasks){
             $scope.tasks=tasks;
+            console.log(tasks);
         });
 
         $scope.getCourseCode = function(course_id){
@@ -69,11 +70,15 @@ angular.module('taskminder.task_table',['ngRoute', 'ui.bootstrap'])
               function(result){
                   console.log(result);
             },function(error){
-                console.log("Boom");
                 console.log(error);
             }
           );
-        }
+        };
 
+        $scope.completeTask = function(task){
+            task.complete = !task.complete;
+            $scope.updateTask(task);
+        };
 
+      
     }]);
