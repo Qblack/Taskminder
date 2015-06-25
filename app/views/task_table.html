@@ -64,7 +64,7 @@
                                             {{ task.location }}
                                         </div>
                                         <div class="col-xs-1">
-                                            <input class="center-block checkbox" type="checkbox" ng-model="task.complete" ng-checked="task.complete">
+                                            <input class="center-block checkbox" type="checkbox" ng-model="task.complete" ng-checked="task.complete" ng-click="updateTask(task)">
                                         </div>
                                         <div class="col-xs-1">
                                             <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
@@ -73,14 +73,27 @@
                                 </accordion-heading>
                                 <div class="row">
                                     <div class="col-xs-12">
-                                        <div class="well well-sm">{{ task.pages }}</div>
+                                        <pre ng-hide="task.description==null||task.description==''">{{ task.description }}</pre>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-12">
-                                        <p>{{ task.description }}</p>
+                                        <div class="well well-sm" ng-hide="(task.pages==''||task.pages==null) && (task.url==null) && (task.weight==null)">
+                                            <div class="row">
+                                                <div class="col-xs-6">
+                                                    <div ng-hide="task.pages==''||task.pages==null"> <b>Pages:</b> {{ task.pages }}</div>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <div ng-hide="task.url == null"> <b>Url:</b> <a href="{{ task.url }}">{{ task.url }}</a></div>
+                                                </div>
+                                                <div class="col-xs-2">
+                                                    <div ng-hide="task.weight == null"> <b>Weight:</b> {{ task.weight }}%</div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+
                             </accordion-group>
 
                         </accordion>

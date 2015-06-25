@@ -35,8 +35,8 @@ angular.module('taskminder.Tasks',[]).
                 return Tasks.delete({userId:userId,id:taskId});
             };
 
-            service.updateTask = function(userId, taskId, task){
-                return Tasks.create({userId:userId,id:taskId},task);
+            service.updateTask = function(userId, task){
+                return Tasks.update({userId:userId,id:task.id},task);
             };
 
             return service;

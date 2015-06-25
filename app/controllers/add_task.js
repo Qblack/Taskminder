@@ -31,6 +31,7 @@ angular.module('taskminder.addTask',[])
             task.course_id = task.course;
             task.complete = false;
             $scope.task = task;
+            $scope.task.type = $scope.task.type.trim();
             Tasks.createTask($scope.user_id,task);
         };
 

@@ -62,6 +62,17 @@ angular.module('taskminder.task_table',['ngRoute', 'ui.bootstrap'])
         $scope.showTask = function(type){
             var string_type =type.trim().toLowerCase().toString();
             return $scope.show[string_type];
+        };
+
+        $scope.updateTask =function(task){
+          Tasks.updateTask($scope.user_id, task).$promise.then(
+              function(result){
+                  console.log(result);
+            },function(error){
+                console.log("Boom");
+                console.log(error);
+            }
+          );
         }
 
 
