@@ -1,0 +1,96 @@
+<script type="text/ng-template" id="edit_task.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Change the Task</h3>
+    </div>
+    <div class="modal-body">
+            <form class="form">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <div class="form-group">
+                            <label for="type">Type:</label>
+                            <select id =  "type"  class="form-control" ng-model="task.type" required>
+                                <option ng-repeat="type in types" value="{{ type }}">{{ type }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="form-group">
+                            <label for="course">Course:</label>
+                            <select id ="course"  class="form-control" ng-model="task.course" required>
+                                <option ng-repeat="course in courses" value="{{ course.id }}">{{ course.code }} {{ course.section }}</option>
+                            </select>
+                            <a href="/#/add_course">Add Course.</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label for="title">Task Title:</label>
+                            <input type="text" class="form-control" id="title" ng-model="task.title" placeholder="Task Title" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-5">
+                        <label for="due_date">When is it due?</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="task.due_date"
+                                   is-open="opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions"
+                                   ng-required="true" close-text="Close" id="due_date"/>
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-2">
+                        <label for="in_class">In Class</label>
+                        <input id="in_class" class="form-control checkbox" type="checkbox" ng-model="task.in_class">
+                    </div>
+                    <div class="col-md-2">
+                        <timepicker ng-show="!task.in_class" id="due_time" ng-model="task.due_time" ng-change="changed()"
+                                    hour-step="hstep" minute-step="mstep" show-meridian="ismeridian">
+                        </timepicker>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="pages">What are you to read?</label>
+                    <input type="text" class="form-control" id="pages" ng-model="task.pages" placeholder="Reading Contents">
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Describe the task</label>
+                    <textarea class="form-control" id="description" ng-model="task.description" placeholder="Description" rows="4"></textarea>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-3">
+                        <label for="weight">Weight:</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="weight" ng-model="task.weight" placeholder="Weight">
+                            <span class="input-group-addon">%</span>
+                        </div>
+                    </div>
+                    <div class="col-xs-9">
+                        <div class="form-group">
+                            <label for="url">Url for more info?</label>
+                            <input type="text" class="form-control" id="url" ng-model="task.url" placeholder="Url">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-9">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="location" ng-model="task.location" placeholder="Location to Hand-in or Write">
+                        </div>
+                    </div>
+                  </div>
+            </form>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="updateTask()">Save</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+    </div>
+</script>
