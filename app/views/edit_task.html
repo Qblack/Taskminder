@@ -8,18 +8,13 @@
                     <div class="col-xs-3">
                         <div class="form-group">
                             <label for="type">Type:</label>
-                            <select id =  "type"  class="form-control" ng-model="task.type" required>
-                                <option ng-repeat="type in types" value="{{ type }}">{{ type }}</option>
-                            </select>
+                            <select id="type" class="form-control" ng-model="task.type" ng-options="type for type in types" required></select>
                         </div>
                     </div>
                     <div class="col-xs-3">
                         <div class="form-group">
                             <label for="course">Course:</label>
-                            <select id ="course"  class="form-control" ng-model="task.course" required>
-                                <option ng-repeat="course in courses" value="{{ course.id }}">{{ course.code }} {{ course.section }}</option>
-                            </select>
-                            <a href="/#/add_course">Add Course.</a>
+                            <select id ="course"  class="form-control" ng-model="task.id_course" ng-options="course.id as (course.code + ' '+ course.section) for course in courses" required></select>
                         </div>
                     </div>
                     <div class="col-xs-6">
@@ -89,7 +84,7 @@
                   </div>
             </form>
         <div class="modal-footer">
-            <button class="btn btn-primary" ng-click="updateTask()">Save</button>
+            <button class="btn btn-primary" ng-click="ok()">Save</button>
             <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
         </div>
     </div>

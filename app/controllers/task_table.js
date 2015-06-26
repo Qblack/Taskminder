@@ -94,12 +94,15 @@ angular.module('taskminder.task_table').controller("TaskTableCtrl",
                 resolve: {
                     task: function () {
                         return task;
+                    },
+                    courses: function(){
+                        return $scope.courses;
                     }
                 }
             });
 
             modalInstance.result.then(function (task) {
-                $scope.selected = task; //TODO set to where it needs to be
+                $scope.updateTask(task);
             }, function () {
                 $log.info('Modal dismissed at: ' + new Date());
             });
@@ -112,10 +115,12 @@ angular.module('taskminder.task_table').controller("TaskTableCtrl",
 }]);
 
 angular.module('taskminder.task_table').controller('TaskModalInstanceCtrl',
-    function ($scope,  $modalInstance, task) {
+    function ($scope,  $modalInstance, task, courses, TYPES) {
         console.log(task);
+        $scope.types = TYPES;
+        $scope.courses = courses;
 
-
+        task.type = task.type.trim();
         $scope.task = task;
 
         $scope.ok = function () {
