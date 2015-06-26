@@ -5,7 +5,7 @@
     <div class="modal-body">
             <form class="form">
                 <div class="row">
-                    <div class="col-xs-3">
+                    <div class="col-xs-4">
                         <div class="form-group">
                             <label for="type">Type:</label>
                             <select id="type" class="form-control" ng-model="task.type" ng-options="type for type in types" required></select>
@@ -17,15 +17,13 @@
                             <select id ="course"  class="form-control" ng-model="task.id_course" ng-options="course.id as (course.code + ' '+ course.section) for course in courses" required></select>
                         </div>
                     </div>
-                    <div class="col-xs-6">
-                        <div class="form-group">
-                            <label for="title">Task Title:</label>
-                            <input type="text" class="form-control" id="title" ng-model="task.title" placeholder="Task Title" required>
-                        </div>
-                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="title">Task Title:</label>
+                    <input type="text" class="form-control" id="title" ng-model="task.title" placeholder="Task Title" required>
                 </div>
                 <div class="row">
-                    <div class="col-xs-5">
+                    <div class="col-xs-8">
                         <label for="due_date">When is it due?</label>
                         <div class="input-group">
                             <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="task.due_date"
@@ -35,15 +33,15 @@
                                 <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                             </span>
                         </div>
-                    </div>
 
-                </div>
-                <div class="form-group row">
-                    <div class="col-md-2">
+                    </div>
+                    <div class="col-xs-2">
                         <label for="in_class">In Class</label>
                         <input id="in_class" class="form-control checkbox" type="checkbox" ng-model="task.in_class">
                     </div>
-                    <div class="col-md-2">
+                </div>
+                <div class="form-group row">
+                    <div class="col-xs-4">
                         <timepicker ng-show="!task.in_class" id="due_time" ng-model="task.due_time" ng-change="changed()"
                                     hour-step="hstep" minute-step="mstep" show-meridian="ismeridian">
                         </timepicker>

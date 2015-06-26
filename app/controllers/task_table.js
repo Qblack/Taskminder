@@ -112,6 +112,7 @@ angular.module('taskminder.task_table').controller("TaskTableCtrl",
             $scope.animationsEnabled = !$scope.animationsEnabled;
         };
 
+
 }]);
 
 angular.module('taskminder.task_table').controller('TaskModalInstanceCtrl',
