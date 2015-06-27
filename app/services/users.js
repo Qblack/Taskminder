@@ -17,6 +17,11 @@ angular.module('taskminder.Users',[]).
             }
         );
 
+        var Authentication = $resource(APIURL+'/users/login',null,
+            {
+                'post':{method:'POST'}
+            });
+
 
         service.getUser = function(userId){
             return Users.get({id:userId});
@@ -39,12 +44,21 @@ angular.module('taskminder.Users',[]).
         };
 
         service.login =function(email, password){
-            $cookies.put('username',email);
-            $cookies.put('user_id',1);
+            Authentication.post({email:email, password:password}).$promise.then(
+                function(success){
+                    console.log(success);
+                    $cookies.put('email',email);
+                    $cookies.put('session',success.session);
+                    $cookies.put('user_id',success.id);
+                },function(err){
+                    console.log("boom"+err)
+            });
         };
 
         service.logout = function(){
-            $cookies.remove('username');
+            $cookies.remove('email');
+            $cookies.remove('session');
+            $cookies.remove('user_id');
         };
 
         return service;
