@@ -19,7 +19,8 @@ angular.module('taskminder.Users',[]).
 
         var Authentication = $resource(APIURL+'/users/login',null,
             {
-                'post':{method:'POST'}
+                'post':{method:'POST'},
+                'delete': {method: 'DELETE'}
             });
 
 
@@ -47,10 +48,8 @@ angular.module('taskminder.Users',[]).
             return Authentication.post({email:email, password:password})
         };
 
-        service.logout = function(){
-            $cookies.remove('email');
-            $cookies.remove('session');
-            $cookies.remove('user_id');
+        service.logout = function(user_id, session){
+            return Authentication.delete({user_id:user_id, session:session})
         };
 
         return service;

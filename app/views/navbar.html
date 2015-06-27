@@ -21,10 +21,17 @@
                     <li><a href="#/add_school">Add a School</a></li>
                     <li><a href="#/add_course">Add a Course</a></li>
                 </ul>
-               <div class="navbar-right">
-                   <div class="navbar-text">
-                       Welcome <a href="#/user"> {{ username }}</a>
-                   </div>
+                <form class="navbar-form navbar-right" ng-show="username!=null">
+                    <div class="form-group ">
+                        <button class="btn btn-info" ng-click="logout()">Logout</button>
+                    </div>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li ng-show="username!=null">
+                        <a href="#/user"> {{ username }}</a>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                </ul>
                </div>
             </div>
         </div>
