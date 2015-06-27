@@ -15,7 +15,8 @@ angular.module('taskminder.task_table').controller("TaskTableCtrl",
     ['$scope','Tasks','$cookies','Courses','$modal','$log',
         function($scope,Tasks,$cookies,Courses,$modal,$log){
         $scope.show_all = false;
-        $scope.user_id = 1;// $cookies.get('user_id');
+        $scope.user_id = $cookies.get('user_id');
+        $scope.username = $cookies.get('username');
         $scope.animationsEnabled = true;
 
         //The shows
@@ -33,7 +34,6 @@ angular.module('taskminder.task_table').controller("TaskTableCtrl",
         $scope.tasks = Tasks.getTasks($scope.user_id);
         $scope.tasks.$promise.then(function(tasks){
             $scope.tasks=tasks;
-            console.log(tasks);
         });
 
         $scope.getCourseCode = function(course_id){
