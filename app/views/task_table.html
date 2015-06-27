@@ -1,6 +1,16 @@
 <div ng-controller="TaskTableCtrl">
     <div ng-include="src='views/edit_task.html'"></div>
-    <div class="container container-fluid" >
+
+
+    <div class="container container-fluid" ng-hide="tasks.count>0">
+        <div class="jumbotron">
+            <h1>Hello, {{username}}!</h1>
+            <p>You have not added any tasks.</p>
+            <p><a class="btn btn-primary btn-lg" href="#/add_task" role="button">Add Tasks</a></p>
+        </div>
+    </div>
+
+    <div class="container container-fluid" ng-show="tasks.count>0" >
         <div class="row">
             <div class="col-xs-3">
                 <button class="btn assignment" ng-click="toggleShowAssignments()">Toggle Assignments</button>
