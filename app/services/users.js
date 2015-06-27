@@ -4,7 +4,7 @@
 'use strict';
 
 angular.module('taskminder.Users',[]).
-    factory('Users',['$cookies', '$resource','APIURL', function($cookies, $resource,APIURL){
+    factory('Users',['$cookies', '$resource','APIURL', function($cookies, $resource, APIURL){
         var service = {};
 
         var Users = $resource(APIURL+'/users/:id',
@@ -44,15 +44,7 @@ angular.module('taskminder.Users',[]).
         };
 
         service.login =function(email, password){
-            Authentication.post({email:email, password:password}).$promise.then(
-                function(success){
-                    console.log(success);
-                    $cookies.put('email',email);
-                    $cookies.put('session',success.session);
-                    $cookies.put('user_id',success.id);
-                },function(err){
-                    console.log("boom"+err)
-            });
+            return Authentication.post({email:email, password:password})
         };
 
         service.logout = function(){

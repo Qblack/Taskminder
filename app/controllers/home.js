@@ -14,10 +14,19 @@ angular.module('taskminder.home',['ngRoute', 'ui.bootstrap'])
             controller: 'HomeCtrl'
         });
     }])
-    .controller("HomeCtrl",['$scope','Users',function($scope,Users){
+    .controller("HomeCtrl",['$scope','Users','$window','$cookies',function($scope,Users,$window,$cookies){
         $scope.user = {};
 
         $scope.login = function(user){
-            Users.login(user.login, user.password);
+            console.log(user);
+            Users.login(user.login, user.password).$promise.then(
+                function(success){
+                    $cookies.put('username',success.username);
+                    $cookies.put('session',success.session);
+                    $cookies.put('user_id',success.id);
+                    $window.location.href = '#/tasks';
+                },function(err){
+                    console.log(err);
+                });
         }
     }]);
