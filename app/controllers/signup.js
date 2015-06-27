@@ -12,12 +12,20 @@ angular.module('taskminder.signup',[])
         });
 
     }])
-    .controller('SignUpCtrl',['$scope',function($scope){
+    .controller('SignUpCtrl',['$scope','Users',function($scope,Users){
         $scope.user = {};
 
-        $scope.signup = function(user){
+        $scope.signUp = function(user){
             //TODO check if user exists
             //TODO check if passwords match
-            //TODO create user
+            $scope.user =  Users.createUser(user);
+            $scope.user.$promise.then(
+                function(user){
+                    $scope.user = user;
+                }, function(error){
+                    console.log("Boom"+error);
+                }
+            )
+
         }
     }]);
