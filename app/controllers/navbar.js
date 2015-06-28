@@ -7,6 +7,11 @@ angular.module('taskminder.navbar', [ 'ui.bootstrap'])
 
         $scope.username = $cookies.get('username');
 
+        $scope.isLoggedIn = function(){
+            $scope.username = $cookies.get('username');
+            return $scope.username!=null;
+        };
+
         $scope.logout = function(){
             var session = $cookies.get('session');
             var user_id = $cookies.get('user_id');
