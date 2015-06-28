@@ -1,8 +1,12 @@
 <div ng-controller="TaskTableCtrl">
     <div ng-include="src='views/edit_task.html'"></div>
+    <div id="pluswrap" ng-hide="loaded">
+        <div class="plus">
 
+        </div>
+    </div>
 
-    <div class="container container-fluid" ng-hide="tasks.length>0">
+    <div class="container container-fluid" ng-show="loaded&&tasks.length==0" ng-cloak="">
         <div class="jumbotron">
             <h1>Hello, {{username}}!</h1>
             <p>You have not added any tasks.</p>
@@ -10,7 +14,7 @@
         </div>
     </div>
 
-    <div class="container container-fluid" ng-show="tasks.length>0" >
+    <div class="container container-fluid" ng-show="tasks.length>0&&loaded" ng-cloak="">
         <div class="row">
             <div class="col-xs-3">
                 <button class="btn assignment" ng-click="toggleShowAssignments()">Toggle Assignments</button>

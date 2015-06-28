@@ -81,3 +81,43 @@
 
 .scrollable.nav {height:300px; width:100%;}
 .scrollable.nav {overflow:hidden; overflow-y:scroll;}
+
+/** for pages that don't load angular but have angular templates in them. **/
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+#pluswrap {
+    position: fixed;
+    width: 100%;
+    height:100%;
+    display: flex;
+    align-items: center;
+    top: 0;
+}
+@keyframes rotate360 {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@-webkit-keyframes rotate360 {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+
+.plus {
+    display: flex;
+    margin: 0 auto;
+    border-radius: 50px;
+    border-style: solid;
+    border-bottom-color: #7A357D;
+    border-top-color: #AA4767;
+    border-left-color: #AA4767;
+    border-right-color: #A8B94E;
+    animation: rotate360 1s linear infinite;
+    -webkit-animation: rotate360 1s linear infinite;
+
+    border-width: 20px;
+    width: 200px;
+    height: 200px;
+}
+
