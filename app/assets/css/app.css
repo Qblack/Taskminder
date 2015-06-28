@@ -1,17 +1,28 @@
 /*http://paletton.com/#uid=74V0u0kiynZ8mBFdmtcnMiLtndb*/
 
-.navbar {
-    background-image: linear-gradient(#955998, #5F1961 20%, #7A357D);
-    background-repeat: no-repeat;
-    border-bottom: 1px solid #178ACC;
-    filter: none;
-    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.1);
-}
 
 .navbar-default{
     background-color :#7A3575;
     border-color: #7A3575 ;
 }
+
+
+.navbar, .navbar-inverse, .navbar-fixed-top, .navbar-static {
+    padding: 5px;
+
+    border-color: transparent;
+    -webkit-box-shadow: 0px 1px 7px 0px rgba(0, 0, 0, 0.55);
+    -moz-box-shadow: 0px 1px 7px 0px rgba(0, 0, 0, 0.55);
+    box-shadow: 0px 1px 7px 0px rgba(0, 0, 0, 0.55);
+    background-image: linear-gradient(#955998, #5F1961 20%, #7A357D);
+    background-repeat: no-repeat;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #fff;
+    font-weight: 400;
+}
+
 
 
 .assignment{
