@@ -6,12 +6,16 @@
 
 angular.module('taskminder.Tasks',[]).
     factory('Tasks',['$resource','APIURL', function( $resource, APIURL ){
-            var service = {};
+        var service = {};
 
         var Tasks = $resource(APIURL+'/users/:userId/tasks/:id',
                 {userId:'@userId', id:'@id'},
                 {
-                    'get': {method: 'GET', isArray:true},
+                    'get': {
+                        method: 'GET',
+                        isArray:true,
+
+                    },
                     'delete': {method: 'DELETE'},
                     'update': {method: 'PUT'},
                     'create': {method: 'POST'}

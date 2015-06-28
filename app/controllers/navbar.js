@@ -13,15 +13,14 @@ angular.module('taskminder.navbar', [ 'ui.bootstrap'])
         };
 
         $scope.logout = function(){
-            var session = $cookies.get('session');
+
             var user_id = $cookies.get('user_id');
-            Authentication.logout(user_id, session);
-            $cookies.remove('session');
+            Authentication.logout(user_id);
+            $window.sessionStorage.token = null;
             $cookies.remove('username');
             $cookies.remove('user_id');
             $scope.username = null;
             $window.location.href='#/home';
-
         };
 
     }]);

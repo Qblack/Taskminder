@@ -18,11 +18,11 @@ angular.module('taskminder.home',['ngRoute', 'ui.bootstrap'])
         $scope.user = {};
 
         $scope.login = function(user){
-            console.log(user);
+            //TODO move this somehow
             Authentication.login(user.login, user.password).$promise.then(
                 function(success){
                     $cookies.put('username',success.username);
-                    $cookies.put('session',success.session);
+                    $window.sessionStorage.token = success.token;
                     $cookies.put('user_id',success.id);
                     $window.location.href = '#/tasks';
                 },function(err){

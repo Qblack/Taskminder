@@ -17,13 +17,6 @@ angular.module('taskminder.Users',[]).
             }
         );
 
-        var Authentication = $resource(APIURL+'/users/login',null,
-            {
-                'post':{method:'POST'},
-                'delete': {method: 'DELETE'}
-            });
-
-
         service.getUser = function(userId){
             return Users.get({id:userId});
         };
@@ -44,13 +37,6 @@ angular.module('taskminder.Users',[]).
             return Users.create({id:userId},user);
         };
 
-        service.login =function(email, password){
-            return Authentication.post({email:email, password:password})
-        };
-
-        service.logout = function(user_id, session){
-            return Authentication.delete({user_id:user_id, session:session})
-        };
 
         return service;
     }]);
