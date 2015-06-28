@@ -31,6 +31,6 @@ var taskminder = angular.module('taskminder',[
 }]);
 
 
-taskminder.constant("APIURL", "http://127.0.0.1:1337");
+taskminder.constant("APIURL", "http://192.168.0.18:1337");
 taskminder.constant("TYPES", ['Reading','Assignment','Test']);
 
