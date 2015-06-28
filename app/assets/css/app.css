@@ -6,6 +6,22 @@
     border-color: #7A3575 ;
 }
 
+.navbar-default .navbar-collapse{
+    border-color: #955998;
+}
+
+.navbar-default .navbar-form{
+    border-color: #955998;
+}
+
+.navbar-default .navbar-toggle{
+    border-color: #955998;
+}
+
+.navbar-default .navbar-toggle:focus {
+    background-color: #5F1961;
+}
+
 
 .navbar, .navbar-inverse, .navbar-fixed-top, .navbar-static {
     padding: 5px;
@@ -22,6 +38,9 @@
     color: #fff;
     font-weight: 400;
 }
+
+}
+
 
 
 
@@ -81,6 +100,12 @@
     background-color: #A2D079;
     color: white;
 }
+
+.btn-logout {
+    background: #7E9125;
+    color:white;
+}
+
 
 .reading.panel-default > .panel-collapse  .well-sm{
     color: #363636;
