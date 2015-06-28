@@ -12,6 +12,7 @@ var taskminder = angular.module('taskminder',[
     'taskminder.Schools',
     'taskminder.Courses',
     'taskminder.Users',
+    'taskminder.Authentication',
     'taskminder.task_table',
     'taskminder.home',
     'taskminder.navbar',
