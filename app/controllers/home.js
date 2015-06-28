@@ -27,6 +27,10 @@ angular.module('taskminder.home',['ngRoute', 'ui.bootstrap'])
                     $window.location.href = '#/tasks';
                 },function(err){
                     console.log(err);
-                });
-        }
+                }
+            );
+        };
+
+        $scope.isLoggedIn = Authentication.isLoggedIn();
+
     }]);

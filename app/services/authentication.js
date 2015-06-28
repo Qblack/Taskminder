@@ -23,6 +23,11 @@ angular.module('taskminder.Authentication',[]).
             return Authentication.delete({user_id:user_id, session:session})
         };
 
+        service.isLoggedIn = function(){
+            var username = $cookies.get('username');
+            return username!=null;
+        };
+
 
         return service;
     }]);
