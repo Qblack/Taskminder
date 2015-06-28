@@ -1,15 +1,31 @@
+/*http://paletton.com/#uid=74V0u0kiynZ8mBFdmtcnMiLtndb*/
+
+.navbar {
+    background-image: linear-gradient(#955998, #5F1961 20%, #7A357D);
+    background-repeat: no-repeat;
+    border-bottom: 1px solid #178ACC;
+    filter: none;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-default{
+    background-color :#7A3575;
+    border-color: #7A3575 ;
+}
+
+
 .assignment{
-    background : #3e9a3e;
+    background : #A8B94E;
     color: white;
 }
 
 .assignment.panel-default > .panel-heading{
-    background-color: #3e9a3e;
+    background-color: #A8B94E;
     color: white;
 }
 
 .assignment.panel-default > .panel-collapse{
-    background-color: #3e7d3e;
+    background-color: #D2E183;
     color: #ffffff;
 }
 
@@ -22,17 +38,17 @@
 }
 
 .test{
-    background : #9b156e;
+    background : #AA4767;
     color: white;
 }
 
 .test.panel-default > .panel-heading{
-    background-color: #9b156e;
+    background-color: #AA4767;
     color: white;
 }
 
 .test.panel-default > .panel-collapse{
-    background-color: #7e1552;
+    background-color: #CF7894;
     color: white;
 }
 
@@ -41,17 +57,17 @@
 }
 
 .reading{
-    background : #00759d;
+    background : #76AB48;
     color: white;
 }
 
 .reading.panel-default > .panel-heading{
-    background-color: #00759d;
+    background-color: #76AB48;
     color: white;
 }
 
 .reading.panel-default > .panel-collapse{
-    background-color: #00547d;
+    background-color: #A2D079;
     color: white;
 }
 
