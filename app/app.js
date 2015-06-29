@@ -60,6 +60,6 @@ taskminder.config(['$resourceProvider', function($resourceProvider) {
 }]);
 
 
-taskminder.constant("APIURL", "http://192.168.0.18:1337/api");
+taskminder.constant("APIURL", "https://floating-lowlands-9476.herokuapp.com/api");
 taskminder.constant("TYPES", ['Reading','Assignment','Test', 'Presentation', 'Misc']);
 
