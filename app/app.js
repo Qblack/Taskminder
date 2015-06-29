@@ -41,7 +41,6 @@ taskminder.factory('authInterceptor', function($rootScope, $q, $window){
        }
        ,
        response: function(response){
-           console.log(response);
            if(response.status == 401){
                //TODO handle the case where the user is not authenticated
            }
@@ -62,5 +61,5 @@ taskminder.config(['$resourceProvider', function($resourceProvider) {
 
 
 taskminder.constant("APIURL", "http://192.168.0.18:1337/api");
-taskminder.constant("TYPES", ['Reading','Assignment','Test']);
+taskminder.constant("TYPES", ['Reading','Assignment','Test', 'Presentation', 'Misc']);
 

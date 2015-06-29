@@ -114,6 +114,46 @@
     color: white;
 }
 
+.presentation{
+    background : #3E5280;
+    color: white;
+}
+
+.presentation.panel-default > .panel-heading{
+    background-color: #3E5280;
+    color: white;
+}
+
+.presentation.panel-default > .panel-collapse{
+    background-color: #909EBC;
+    color: #ffffff;
+}
+
+.presentation.panel-default > .panel-collapse  .well-sm{
+    color: #363636;
+}
+
+.misc{
+    background : #BF8050;
+    color: white;
+}
+
+.misc.panel-default > .panel-heading{
+    background-color: #BF8050;
+    color: white;
+}
+
+.misc.panel-default > .panel-collapse{
+    background-color: #E9B288;
+    color: #ffffff;
+}
+
+.misc.panel-default > .panel-collapse  .well-sm{
+    color: #363636;
+}
+
+
+
 .btn-logout {
     background: #7E9125;
     color:white;
