@@ -38,7 +38,6 @@ angular.module('taskminder.task_table').controller("TaskTableCtrl",
         Tasks.getTasks($scope.user_id).$promise.then(function(tasks){
             $scope.tasks=tasks;
             $scope.loaded = true;
-            console.log(tasks)
         });
 
         $scope.getCourseCode = function(course_id){
