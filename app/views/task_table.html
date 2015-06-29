@@ -1,124 +1,132 @@
 <div ng-controller="TaskTableCtrl">
-    <div ng-include="src='views/edit_task.html'"></div>
-    <div id="pluswrap" ng-hide="loaded">
-        <div class="plus">
 
-        </div>
-    </div>
-
-    <div class="container container-fluid" ng-show="loaded&&tasks.length==0" ng-cloak="">
-        <div class="jumbotron">
-            <h1>Hello, {{username}}!</h1>
-            <p>You have not added any tasks.</p>
-            <p><a class="btn btn-primary btn-lg" href="#/add_task" role="button">Add Tasks</a></p>
-        </div>
-    </div>
-
-    <div class="container container-fluid" ng-show="tasks.length>0&&loaded" ng-cloak="">
-        <div class="row">
-            <div class="col-xs-3">
-                <button class="btn assignment" ng-click="toggleShowAssignments()">Toggle Assignments</button>
-            </div>
-            <div class="col-xs-3 text-center">
-                <button class="btn test" ng-click="toggleShowTests()">Toggle Tests</button>
-            </div>
-            <div class="col-xs-3 text-center">
-                <button class="btn reading" ng-click="toggleShowReadings()">Toggle Readings</button>
-            </div>
-            <div class="col-xs-3 ">
-                <button class="btn show-complete pull-right" ng-click="toggleShowAll()">Toggle Completed</button>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="col-xs-1">
-                        <h4>Course</h4>
-                    </div>
-                    <div class="col-xs-3">
-                        <h4>Title</h4>
-                    </div>
-                    <div class="col-xs-2">
-                        <h4>Date</h4>
-                    </div>
-                    <div class="col-xs-1">
-                        <h4>Time</h4>
-                    </div>
-                    <div class="col-xs-3">
-                        <h4>Location</h4>
-                    </div>
-                    <div class="col-xs-1">
-                        <h4>Done</h4>
-                    </div>
-                    <div class="col-xs-1">
-                        <h4>More</h4>
+    <div class="container container-fluid" >
+        <div ng-include="src='views/edit_task.html'"></div>
+        <div class="row" ng-show="loaded&&tasks.length==0" ng-cloak="">
+            <div class="col-xs-12">
+                <div id="pluswrap" ng-hide="loaded">
+                    <div class="plus">
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-xs-12">
-                        <accordion>
-                            <accordion-group ng-repeat="task in tasks | orderBy:'due_date'" class=" row {{ task.type.toLowerCase() }}" ng-show="(task.complete ? show_all : true) && showTask(task.type)">
-                                <accordion-heading>
-                                    <div class="row">
-                                        <div class="col-xs-1">
-                                            {{ getCourseCode(task.id_course) }}
-                                        </div>
-                                        <div class="col-xs-3">
-                                            {{ task.title }}
-                                        </div>
-                                        <div class="col-xs-2">
-                                            {{ task.due_date | date : "mediumDate" }}
-                                        </div>
-                                        <div class="col-xs-1" ng-if="task.in_class">
-                                            In class
-                                        </div>
-                                        <div class="col-xs-1" ng-if="!task.in_class">
-                                            {{ task.due_time | date : "shortTime" }}
-                                        </div>
-                                        <div class="col-xs-3">
-                                            {{ task.location }}
-                                        </div>
-                                        <div class="col-xs-1">
-                                            <i ng-hide="task.complete" class="fa fa-square-o" ng-click="completeTask(task)"></i>
-                                            <i ng-show="task.complete" class="fa fa-check-square-o" ng-click="completeTask(task)"></i>
-                                            <i class="fa fa-pencil-square-o" ng-click="openEdit(task)" tooltip="Edit Task." ></i>
-                                            <i class="fa fa-trash-o"></i>
+            </div>
+        </div>
+        <div class="row" ng-show="loaded&&tasks.length==0" ng-cloak="">
+            <div class="col-xs-12">
+                <div class="jumbotron">
+                    <h1>Hello, {{username}}!</h1>
+                    <p>You have not added any tasks.</p>
+                    <p><a class="btn btn-primary btn-lg" href="#/add_task" role="button">Add Tasks</a></p>
+                </div>
+            </div>
+        </div>
 
-                                        </div>
-                                        <div class="col-xs-1">
-                                            <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
-                                        </div>
-                                    </div>
-                                </accordion-heading>
+        <div id="table" ng-show="tasks.length>0&&loaded" ng-cloak="">
+            <div class="row">
+                <div class="col-xs-12">
+                        <b>Toggle: </b>
+                        <button class="btn assignment" ng-click="toggleShowAssignments()">Assignments</button>
+                        <button class="btn test" ng-click="toggleShowTests()">Tests</button>
+                        <button class="btn reading" ng-click="toggleShowReadings()">Readings</button>
+                        <button class="btn presentation" ng-click="toggleShowPresentations()">Presentations</button>
+                        <button class="btn misc" ng-click="toggleShowMisc()">Misc</button>
+                        <button class="btn show-complete" ng-click="toggleShowAll()">Completed</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-xs-1">
+                            <h4>Course</h4>
+                        </div>
+                        <div class="col-xs-3">
+                            <h4>Title</h4>
+                        </div>
+                        <div class="col-xs-2">
+                            <h4>Date</h4>
+                        </div>
+                        <div class="col-xs-1">
+                            <h4>Time</h4>
+                        </div>
+                        <div class="col-xs-3">
+                            <h4>Location</h4>
+                        </div>
+                        <div class="col-xs-1">
+                            <h4>Done</h4>
+                        </div>
+                        <div class="col-xs-1">
+                            <h4>More</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <accordion>
+                        <accordion-group ng-repeat="task in tasks | orderBy:'due_date'" class=" row {{ task.type.toLowerCase() }}" ng-show="(task.complete ? show_all : true) && showTask(task.type)">
+                            <accordion-heading>
                                 <div class="row">
-                                    <div class="col-xs-12">
-                                        <pre ng-hide="task.description==null||task.description==''">{{ task.description }}</pre>
+                                    <div class="col-xs-1">
+                                        {{ getCourseCode(task.id_course) }}
+                                    </div>
+                                    <div class="col-xs-3">
+                                        {{ task.title }}
+                                    </div>
+                                    <div class="col-xs-2">
+                                        {{ task.due_date | date : "mediumDate" }}
+                                    </div>
+                                    <div class="col-xs-1" ng-if="task.in_class">
+                                        In class
+                                    </div>
+                                    <div class="col-xs-1" ng-if="!task.in_class">
+                                        {{ task.due_time | date : "shortTime" }}
+                                    </div>
+                                    <div class="col-xs-3">
+                                        {{ task.location }}
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <i ng-hide="task.complete" class="fa fa-square-o" ng-click="completeTask(task)"></i>
+                                        <i ng-show="task.complete" class="fa fa-check-square-o" ng-click="completeTask(task)"></i>
+                                        <i class="fa fa-pencil-square-o" ng-click="openEdit(task)" tooltip="Edit Task." ></i>
+                                        <i class="fa fa-trash-o"></i>
+
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <div class="well well-sm" ng-hide="(task.pages==''||task.pages==null) && (task.url==null) && (task.weight==null)">
-                                            <div class="row">
-                                                <div class="col-xs-6">
-                                                    <div ng-hide="task.pages==''||task.pages==null"> <b>Pages:</b> {{ task.pages }}</div>
-                                                </div>
-                                                <div class="col-xs-4">
-                                                    <div ng-hide="task.url == null"> <b>Url:</b> <a href="{{ task.url }}">{{ task.url }}</a></div>
-                                                </div>
-                                                <div class="col-xs-2">
-                                                    <div ng-hide="task.weight == null"> <b>Weight:</b> {{ task.weight }}%</div>
-                                                </div>
+                            </accordion-heading>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <pre ng-hide="task.description==null||task.description==''">{{ task.description }}</pre>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="well well-sm" ng-hide="(task.pages==''||task.pages==null) && (task.url==null) && (task.weight==null)">
+                                        <div class="row">
+                                            <div class="col-xs-6">
+                                                <div ng-hide="task.pages==''||task.pages==null"> <b>Pages:</b> {{ task.pages }}</div>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <div ng-hide="task.url == null"> <b>Url:</b> <a href="{{ task.url }}">{{ task.url }}</a></div>
+                                            </div>
+                                            <div class="col-xs-2">
+                                                <div ng-hide="task.weight == null"> <b>Weight:</b> {{ task.weight }}%</div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
-                            </accordion-group>
+                        </accordion-group>
 
-                        </accordion>
-                    </div>
+                    </accordion>
                 </div>
+
             </div>
         </div>
+
     </div>
 </div>

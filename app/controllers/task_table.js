@@ -25,7 +25,9 @@ angular.module('taskminder.task_table').controller("TaskTableCtrl",
         $scope.show = {
             assignment:true,
             test:true,
-            reading:true
+            reading:true,
+            presentation: true,
+            misc: true
         };
 
         $scope.courses = Courses.getCourses();
@@ -65,6 +67,14 @@ angular.module('taskminder.task_table').controller("TaskTableCtrl",
         $scope.toggleShowReadings = function(){
             $scope.show.reading = !$scope.show.reading;
         };
+        $scope.toggleShowPresentations = function(){
+            $scope.show.presentation = !$scope.show.presentation;
+        };
+        $scope.toggleShowMisc = function(){
+            $scope.show.misc = !$scope.show.misc;
+        };
+
+
 
         $scope.showTask = function(type){
             var string_type =type.trim().toLowerCase().toString();
