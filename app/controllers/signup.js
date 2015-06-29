@@ -14,6 +14,8 @@ angular.module('taskminder.signup',[])
     }])
     .controller('SignUpCtrl',['$scope','Users',function($scope,Users){
         $scope.user = {};
+        $scope.success = null;
+        $scope.message = null;
 
         $scope.signUp = function(user){
             //TODO check if user exists
@@ -22,8 +24,11 @@ angular.module('taskminder.signup',[])
             $scope.user.$promise.then(
                 function(user){
                     $scope.user = user;
+                    $scope.success = true;
+                    $scope.message = user;
                 }, function(error){
-                    console.log("Boom"+error);
+                    $scope.success = false;
+                    $scope.message = error;
                 }
             )
 
