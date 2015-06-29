@@ -4,27 +4,45 @@
 .navbar-default{
     background-color :#7A3575;
     border-color: #7A3575 ;
+    color: white;
+
+}
+
+.navbar-default .navbar-brand{
+    color: white;
 }
 
 .navbar-default .navbar-collapse{
     border-color: #955998;
+    color: white;
+
+}
+.navbar-default .navbar-nav > li > a{
+    color:white;
 }
 
 .navbar-default .navbar-form{
     border-color: #955998;
+    color: white;
+
 }
 
 .navbar-default .navbar-toggle{
     border-color: #955998;
+    color: white;
+
 }
 
 .navbar-default .navbar-toggle:focus {
     background-color: #5F1961;
+    color: white;
+
 }
 
 
 .navbar, .navbar-inverse, .navbar-fixed-top, .navbar-static {
     padding: 5px;
+    color: white;
 
     border-color: transparent;
     -webkit-box-shadow: 0px 1px 7px 0px rgba(0, 0, 0, 0.55);
