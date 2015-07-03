@@ -5,7 +5,7 @@
 
 
 angular.module('taskminder.Authentication',[]).
-    factory('Authentication',['$cookies', '$resource','APIURL','$window', function($cookies, $resource, APIURL,$window){
+    factory('Authentication',['$cookies', '$resource','APIURL','$window', function($cookies, $resource, APIURL, $window){
         var service = {};
 
         var Authentication = $resource(APIURL+'/authenticate',null,
@@ -30,6 +30,25 @@ angular.module('taskminder.Authentication',[]).
 
         service.getToken = function(){
             return $window.sessionStorage.token;
+        };
+
+        service.saveSession = function(session){
+            $cookies.put('username',session.username);
+            $window.sessionStorage.token = session.token;
+            $cookies.put('user_id',session.id);
+        };
+
+        service.createSession = function(login, password){
+            service.login(login, password).$promise.then(
+                function(success){
+                    $cookies.put('username',success.username);
+                    $window.sessionStorage.token = success.token;
+                    $cookies.put('user_id',success.id);
+                    $window.location.href = '#/tasks';
+                },function(err){
+                    console.log(err);
+                }
+            );
         };
 
 

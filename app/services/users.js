@@ -25,6 +25,12 @@ angular.module('taskminder.Users',[]).
             return Users.query();
         };
 
+        service.getIdentifiers = function(){
+            var Identifiers = $resource(APIURL+'/users/identifiers',{},{'get':{method:'GET', isArray:true}});
+            return Identifiers.get();
+        };
+
+
         service.createUser = function(user){
             return Users.create(user);
         };
