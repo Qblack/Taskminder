@@ -16,6 +16,8 @@ angular.module('taskminder.home',['ngRoute', 'ui.bootstrap'])
     }])
     .controller("HomeCtrl",['$scope','Authentication','$window','$cookies',function($scope,Authentication,$window,$cookies){
         $scope.user = {};
+        $scope.message = null;
+        $scope.success=null;
 
         $scope.login = function(user){
             //TODO move this somehow
@@ -26,7 +28,8 @@ angular.module('taskminder.home',['ngRoute', 'ui.bootstrap'])
                     $cookies.put('user_id',success.id);
                     $window.location.href = '#/tasks';
                 },function(err){
-                    console.log(err);
+                    $scope.message = err.data.message;
+                    $scope.success="has-error";
                 }
             );
         };
