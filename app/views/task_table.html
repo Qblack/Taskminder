@@ -80,7 +80,7 @@
                                         In class
                                     </div>
                                     <div class="col-xs-1" ng-if="!task.in_class">
-                                        {{ task.due_time | date : "shortTime" }}
+                                        {{ task.due_time | date : "h:mm a"}}
                                     </div>
                                     <div class="col-xs-3">
                                         {{ task.location }}

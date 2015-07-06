@@ -46,7 +46,7 @@ angular.module('taskminder.task_table').controller("TaskTableCtrl",
             var found = false;
             var i =0;
             var code = '';
-            while(found==false){
+            while(found==false && i<$scope.courses.length){
                 if( course_id == $scope.courses[i].id){
                     found =true;
                     code = $scope.courses[i].code;
@@ -88,7 +88,7 @@ angular.module('taskminder.task_table').controller("TaskTableCtrl",
         $scope.updateTask =function(task){
           Tasks.updateTask($scope.user_id, task).$promise.then(
               function(result){
-                  console.log(result);
+                  console.log("success");
             },function(error){
                 console.log(error);
             }
