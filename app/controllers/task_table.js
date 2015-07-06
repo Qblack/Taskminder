@@ -27,7 +27,8 @@ angular.module('taskminder.task_table').controller("TaskTableCtrl",
             test:true,
             reading:true,
             presentation: true,
-            misc: true
+            misc: true,
+            meeting : true
         };
 
         $scope.courses = Enrollments.getUserEnrollments($scope.user_id);
@@ -72,6 +73,9 @@ angular.module('taskminder.task_table').controller("TaskTableCtrl",
         };
         $scope.toggleShowMisc = function(){
             $scope.show.misc = !$scope.show.misc;
+        };
+        $scope.toggleShowMeetings = function(){
+            $scope.show.meeting = !$scope.show.meeting;
         };
 
 

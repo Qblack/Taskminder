@@ -133,6 +133,26 @@
     color: #363636;
 }
 
+.meeting{
+    background : #307373;
+    color: white;
+}
+
+.meeting.panel-default > .panel-heading{
+    background-color: #438989;
+    color: white;
+}
+
+.meeting.panel-default > .panel-collapse{
+    background-color: #00759d;
+    color: #ffffff;
+}
+
+.meeting.panel-default > .panel-collapse  .well-sm{
+    color: #363636;
+}
+
+
 .misc{
     background : #BF8050;
     color: white;
