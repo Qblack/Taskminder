@@ -25,6 +25,13 @@ angular.module('taskminder.Enrollments',[]).
             return Enrollments.get({id:enrollId});
         };
 
+        service.getUserEnrollments = function(userId){
+            var UserEnrollments = $resource(APIURL+'/users/:id/enrollments',
+                {id:'@id'},
+                {'get':{method:'GET', isArray:true}});
+            return UserEnrollments.get({id:userId});
+        };
+
         service.getEnrollments = function(){
             return Enrollments.query();
         };
