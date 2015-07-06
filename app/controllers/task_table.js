@@ -12,8 +12,8 @@ angular.module('taskminder.task_table').config(['$routeProvider', function($rout
     }]);
 
 angular.module('taskminder.task_table').controller("TaskTableCtrl",
-    ['$scope','Tasks','$cookies','Courses','$modal','$log',
-        function($scope,Tasks,$cookies,Courses,$modal,$log){
+    ['$scope','Tasks','$cookies','Courses','$modal','$log','Enrollments',
+        function($scope,Tasks,$cookies,Courses,$modal,$log, Enrollments){
         $scope.show_all = false;
         $scope.user_id = $cookies.get('user_id');
         $scope.username = $cookies.get('username');
@@ -30,7 +30,7 @@ angular.module('taskminder.task_table').controller("TaskTableCtrl",
             misc: true
         };
 
-        $scope.courses = Courses.getCourses();
+        $scope.courses = Enrollments.getUserEnrollments($scope.user_id);
         $scope.courses.$promise.then(function(courses){
             $scope.courses=courses;
         });
@@ -123,13 +123,10 @@ angular.module('taskminder.task_table').controller("TaskTableCtrl",
         $scope.toggleAnimation = function () {
             $scope.animationsEnabled = !$scope.animationsEnabled;
         };
-
-
 }]);
 
 angular.module('taskminder.task_table').controller('TaskModalInstanceCtrl',
     function ($scope,  $modalInstance, task, courses, TYPES) {
-        console.log(task);
         $scope.types = TYPES;
         $scope.courses = courses;
 
@@ -208,7 +205,6 @@ angular.module('taskminder.task_table').controller('TaskModalInstanceCtrl',
             return '';
         };
 
-        $scope.task.due_time = new Date();
         $scope.hstep = 1;
         $scope.mstep = 15;
 
