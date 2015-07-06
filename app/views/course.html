@@ -1,0 +1,19 @@
+<script type="text/ng-template" id="course.html">
+    <div class="modal-header">
+        <h3 class="modal-title"> {{ course.code }}: Is this your course?</h3>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>{{ course.professor }}</h1>
+                <h1>{{ course.name }} <small>Section: {{course.section}}</small></h1>
+                <h1>{{ course.year }} <small>{{course.semester}}</small></h1>
+                <p>{{ course.description }}</p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">Enroll</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+    </div>
+</script>

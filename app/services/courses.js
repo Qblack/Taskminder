@@ -17,7 +17,6 @@ angular.module('taskminder.Courses',[]).
             }
         );
 
-
         service.getCourse = function(courseId){
             return Courses.get({id:courseId});
         };
@@ -36,6 +35,11 @@ angular.module('taskminder.Courses',[]).
 
         service.updateCourse = function(courseId, course){
             return Courses.create({id:courseId},course);
+        };
+
+
+        service.filterCourses = function(query){
+            return Courses.query(query);
         };
 
         return service;
