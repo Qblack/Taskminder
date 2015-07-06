@@ -10,49 +10,55 @@
             <div class="col-md-6 col-md-offset-3">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <div ng-show="success" class="alert alert-dismissible alert-success" role="alert">
-                            Your course has been added
+                        <div ng-hide="success==null" ng-class="success ? 'alert alert-dismissible alert-success' :'alert alert-dismissible alert-warning' " role="alert">
+                            {{message}}
                             <button ng-show="success" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         </div>
 
-                        <form>
+                        <form ng-submit="add(course)">
                             <div class="form-group">
-                                <label for="name">What course will you be taking?</label>
+                                <label class="control-label" for="name">What course will you be taking?</label>
                                 <input type="text" class="form-control" id="name" ng-model="course.name" placeholder="{{fake_course}}" required autofocus>
                             </div>
                             <div class="form-group">
-                                <label for="description">Describe what you will be learning</label>
+                                <label class="control-label" for="description">Describe what you will be learning</label>
                                 <input type="text" class="form-control" id="description" ng-model="course.description" placeholder="Course Description" required>
                             </div>
                             <div class="form-group">
-                                <label for="school">What school are you taking the course from?</label>
-                                <select id ="school" class="form-control" ng-model="task.school" required>
-                                    <option ng-repeat="school in schools" value="{{ school.id }}">{{ school.name }}</option>
-                                </select>
+                                <label class="control-label" for="school">What school are you taking the course from?</label>
+                                <select id ="school"  class="form-control" ng-model="course.id_school" ng-options="school.id as school.name for school in schools" required></select>
                                 School not there? <a href="/#/add_school">Add it.</a>
                             </div>
                             <div class="form-group">
-                                <label for="code">What is the course code?</label>
+                                <label class="control-label" for="code">What is the course code?</label>
                                 <input type="text" class="form-control" id="code" ng-model="course.code" placeholder="Up Up Down Down Left Right Left Right B A Start" required>
                             </div>
                             <div class="form-group">
-                                <label for="professor">Who will be teaching you?</label>
+                                <label class="control-label" for="professor">Who will be teaching you?</label>
                                 <input type="text" class="form-control" id="professor" ng-model="course.professor" placeholder="{{fake_professor}}" required>
                             </div>
                             <div class="form-group">
-                                <label for="section">What is your course section?</label>
+                                <label class="control-label" for="section">What is your course section?</label>
                                     <input type="text" class="form-control" id="section" ng-model="course.section" placeholder="Section">
                             </div>
                             <div class="form-group">
-                                <label for="syllabus">Link to the syllabus?</label>
+                                <label class="control-label" for="year">What year is the course in?</label>
+                                <input type="text" class="form-control" id="year" ng-model="course.year" placeholder="Year">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="semester">What semester is this course in</label>
+                                <input type="text" class="form-control" id="semester" ng-model="course.semester" placeholder="Semester">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="syllabus">Link to the syllabus?</label>
                                     <input type="text" class="form-control" id="syllabus" ng-model="course.syllabus" placeholder="Silly Bus?">
                             </div>
                             <div class="form-group">
-                                <label for="website">Course Website</label>
+                                <label class="control-label" for="website">Course Website</label>
                                 <input type="text" class="form-control" id="website" ng-model="course.website" placeholder="www.imaurl.com">
                             </div>
 
-                            <button type="submit" class="btn btn-default pull-right" ng-click="add(course)">Add Course</button>
+                            <button type="submit" class="btn btn-default pull-right" >Add Course</button>
                         </form>
                     </div>
                 </div>

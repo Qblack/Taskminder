@@ -56,6 +56,7 @@ angular.module('taskminder.task_table').controller("TaskTableCtrl",
             return code;
         };
 
+        //TODO Make these all one function
         $scope.toggleShowAll = function(){
             $scope.show_all = !$scope.show_all;
         };
@@ -77,7 +78,6 @@ angular.module('taskminder.task_table').controller("TaskTableCtrl",
         $scope.toggleShowMeetings = function(){
             $scope.show.meeting = !$scope.show.meeting;
         };
-
 
 
         $scope.showTask = function(type){

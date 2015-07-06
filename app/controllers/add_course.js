@@ -13,13 +13,18 @@ angular.module('taskminder.addCourse',[])
     }])
     .controller('AddCourseCtrl',['$scope','Schools','Courses',function($scope,Schools,Courses){
         $scope.course = {};
-        $scope.success = false;
+        $scope.success = null;
+        $scope.message = null;
 
         $scope.add = function(course){
             Courses.createCourse(course).$promise.then(
                 function(courseId) {
-                    console.log(courseId);
                     $scope.success = true;
+                    $scope.message = $scope.course.name + " has been successfully added";
+                    $scope.course = {};
+                }, function(error){
+                    $scope.success = false;
+                    $scope.message = "A course with that name, section, and time period already exists.";
                 });
         };
 
