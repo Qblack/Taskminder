@@ -12,7 +12,7 @@ angular.module('taskminder.addTask',[])
         });
 
     }])
-    .controller('AddTaskCtrl',['$scope','Tasks','Schools','Courses' , 'TYPES','$cookies',function($scope,Tasks, Schools, Courses, TYPES, $cookies){
+    .controller('AddTaskCtrl',['$scope','Tasks','Schools','Enrollments' , 'TYPES','$cookies',function($scope,Tasks, Schools, Enrollments, TYPES, $cookies){
         $scope.task = {};
         $scope.user_id = $cookies.get('user_id');
         $scope.task.in_class = true;
@@ -20,7 +20,7 @@ angular.module('taskminder.addTask',[])
         $scope.message = null;
 
         //TODO get user's actual courses
-        $scope.courses =  Courses.getCourses();
+        $scope.courses = Enrollments.getUserEnrollments($scope.user_id);
         $scope.courses.$promise.then(
             function(courses) {
                 $scope.courses = courses;
