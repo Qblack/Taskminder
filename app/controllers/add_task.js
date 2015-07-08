@@ -19,7 +19,6 @@ angular.module('taskminder.addTask',[])
         $scope.success = null;
         $scope.message = null;
 
-        //TODO get user's actual courses
         $scope.courses = Enrollments.getUserEnrollments($scope.user_id);
         $scope.courses.$promise.then(
             function(courses) {
@@ -36,11 +35,11 @@ angular.module('taskminder.addTask',[])
             $scope.task.type = $scope.task.type.trim();
             Tasks.createTask($scope.user_id,task).$promise.then(
                 function(success) {
-                    $scope.success = 'success';
-                    $scope.message = success;
+                    $scope.success = true;
+                    $scope.message = "Task was successfully added.";
                 },function(error) {
-                    $scope.message = error;
-                    $scope.success = 'danger';
+                    $scope.message = error.data.message;
+                    $scope.success = false;
                 }
             );
         };
