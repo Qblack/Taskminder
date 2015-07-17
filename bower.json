@@ -1,9 +1,9 @@
 {
-  "name": "Taskminder",
-  "description": "A web interface for interacting with your tasks",
+  "name": "Taskowl",
+  "description": "A linear view of what to do",
   "version": "0.0.0",
   "homepage": "",
-  "license": "MIT",
+  "license": "",
   "private": true,
   "dependencies": {
 

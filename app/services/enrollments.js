@@ -7,7 +7,7 @@
  */
 'use strict';
 
-angular.module('taskminder.Enrollments',[]).
+angular.module('taskowl.Enrollments',[]).
     factory('Enrollments',['$resource','APIURL', function( $resource, APIURL ){
         var service = {};
 

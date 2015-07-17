@@ -1,10 +1,10 @@
 {
-  "name": "Taskminder",
+  "name": "Taskowl",
   "private": true,
   "version": "0.0.1",
   "description": "",
   "repository": "",
-  "license": "MIT",
+  "license": "",
   "devDependencies": {
     "karma": "~0.10",
     "protractor": "^1.1.1",

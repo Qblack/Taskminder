@@ -2,7 +2,7 @@
  * Created by Q on 6/10/2015.
  */
 'use strict';
-angular.module('taskminder.addSchool',[])
+angular.module('taskowl.addSchool',[])
     .config(['$routeProvider', function($routeProvider){
         $routeProvider.when('/add_school',{
             templateUrl: 'views/add_school.html',

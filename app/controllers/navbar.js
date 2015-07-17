@@ -2,7 +2,7 @@
  * Created by Q on 6/7/2015.
  */
 'use strict';
-angular.module('taskminder.navbar', [ 'ui.bootstrap'])
+angular.module('taskowl.navbar', [ 'ui.bootstrap'])
     .controller('NavBarCtrl', ['$scope','$cookies','Authentication','$window',function ($scope,$cookies,Authentication,$window) {
 
         $scope.username = $cookies.get('username');

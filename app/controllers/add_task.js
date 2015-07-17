@@ -4,7 +4,7 @@
 'use strict';
 
 
-angular.module('taskminder.addTask',[])
+angular.module('taskowl.addTask',[])
     .config(['$routeProvider', function($routeProvider){
         $routeProvider.when('/add_task',{
             templateUrl: 'views/add_task.html',

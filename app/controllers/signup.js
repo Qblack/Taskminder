@@ -4,7 +4,7 @@
 'use strict';
 
 
-angular.module('taskminder.signup',[])
+angular.module('taskowl.signup',[])
     .config(['$routeProvider', function($routeProvider){
         $routeProvider.when('/signup',{
             templateUrl: 'views/signup.html',

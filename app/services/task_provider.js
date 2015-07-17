@@ -4,7 +4,7 @@
 'use strict';
 
 
-angular.module('taskminder.Tasks',[]).
+angular.module('taskowl.Tasks',[]).
     factory('Tasks',['$resource','APIURL', function( $resource, APIURL ){
         var service = {};
 

@@ -4,7 +4,7 @@
 'use strict';
 
 
-angular.module('taskminder.Authentication',[]).
+angular.module('taskowl.Authentication',[]).
     factory('Authentication',['$cookies', '$resource','APIURL','$window', function($cookies, $resource, APIURL, $window){
         var service = {};
 

@@ -3,15 +3,15 @@
  */
 'use strict';
 
-angular.module('taskminder.task_table',['ngRoute','ui.bootstrap']);
-angular.module('taskminder.task_table').config(['$routeProvider', function($routeProvider){
+angular.module('taskowl.task_table',['ngRoute','ui.bootstrap']);
+angular.module('taskowl.task_table').config(['$routeProvider', function($routeProvider){
         $routeProvider.when('/tasks',{
             templateUrl: 'views/task_table.html',
             controller: 'TaskTableCtrl'
         });
     }]);
 
-angular.module('taskminder.task_table').controller("TaskTableCtrl",
+angular.module('taskowl.task_table').controller("TaskTableCtrl",
     ['$scope','Tasks','$cookies','Courses','$modal','$log','Enrollments',
         function($scope,Tasks,$cookies,Courses,$modal,$log, Enrollments){
         $scope.show_all = false;
@@ -129,7 +129,7 @@ angular.module('taskminder.task_table').controller("TaskTableCtrl",
         };
 }]);
 
-angular.module('taskminder.task_table').controller('TaskModalInstanceCtrl',
+angular.module('taskowl.task_table').controller('TaskModalInstanceCtrl',
     function ($scope,  $modalInstance, task, courses, TYPES) {
         $scope.types = TYPES;
         $scope.courses = courses;

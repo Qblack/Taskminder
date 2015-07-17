@@ -3,7 +3,7 @@
  */
 'use strict';
 
-angular.module('taskminder.Users',[]).
+angular.module('taskowl.Users',[]).
     factory('Users',['$cookies', '$resource','APIURL', function($cookies, $resource, APIURL){
         var service = {};
 

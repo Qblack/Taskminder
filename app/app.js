@@ -3,36 +3,36 @@
  */
 'use strict';
 
-var taskminder = angular.module('taskminder',[
+var taskowl = angular.module('taskowl',[
     'ngRoute',
     'ui.bootstrap',
     'ngCookies',
     'ngResource',
-    'taskminder.Tasks',
-    'taskminder.Schools',
-    'taskminder.Courses',
-    'taskminder.Users',
-    'taskminder.Authentication',
-    'taskminder.Enrollments',
-    'taskminder.task_table',
-    'taskminder.home',
-    'taskminder.navbar',
-    'taskminder.enrollment',
-    'taskminder.signup',
-    'taskminder.addTask',
-    'taskminder.addSchool',
-    'taskminder.addCourse'
+    'taskowl.Tasks',
+    'taskowl.Schools',
+    'taskowl.Courses',
+    'taskowl.Users',
+    'taskowl.Authentication',
+    'taskowl.Enrollments',
+    'taskowl.task_table',
+    'taskowl.home',
+    'taskowl.navbar',
+    'taskowl.enrollment',
+    'taskowl.signup',
+    'taskowl.addTask',
+    'taskowl.addSchool',
+    'taskowl.addCourse'
 
 
 
 ]);
 
-taskminder.config(['$routeProvider', function($routeProvider) {
+taskowl.config(['$routeProvider', function($routeProvider) {
     $routeProvider.otherwise({redirectTo: '/'});
 
 }]);
 
-taskminder.factory('authInterceptor', function($rootScope, $q, $window){
+taskowl.factory('authInterceptor', function($rootScope, $q, $window){
    return {
        request: function(config){
            config.headers = config.headers || {};
@@ -52,17 +52,17 @@ taskminder.factory('authInterceptor', function($rootScope, $q, $window){
 });
 
 
-taskminder.config(function ($httpProvider) {
+taskowl.config(function ($httpProvider) {
     $httpProvider.interceptors.push('authInterceptor');
 });
 
-taskminder.config(['$resourceProvider', function($resourceProvider) {
+taskowl.config(['$resourceProvider', function($resourceProvider) {
     // Don't strip trailing slashes from calculated URLs
     $resourceProvider.defaults.stripTrailingSlashes = false;
 }]);
 
 
-taskminder.constant("APIURL", "https://floating-lowlands-9476.herokuapp.com/api");
-//taskminder.constant("APIURL", "http://localhost:1337/api");
-taskminder.constant("TYPES", ['Reading','Assignment','Test', 'Presentation', 'Meeting', 'Misc']);
+//taskowl.constant("APIURL", "https://floating-lowlands-9476.herokuapp.com/api");
+taskowl.constant("APIURL", "http://localhost:1337/api");
+taskowl.constant("TYPES", ['Reading','Assignment','Test', 'Presentation', 'Meeting', 'Misc']);
 

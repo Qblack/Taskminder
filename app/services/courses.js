@@ -3,7 +3,7 @@
  */
 'use strict';
 
-angular.module('taskminder.Courses',[]).
+angular.module('taskowl.Courses',[]).
     factory('Courses',['$resource','APIURL', function( $resource, APIURL ){
         var service = {};
 

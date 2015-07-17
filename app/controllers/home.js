@@ -3,7 +3,7 @@
  */
 'use strict';
 
-angular.module('taskminder.home',['ngRoute', 'ui.bootstrap'])
+angular.module('taskowl.home',['ngRoute', 'ui.bootstrap'])
     .config(['$routeProvider', function($routeProvider){
         $routeProvider.when('/',{
             templateUrl: 'views/home.html',

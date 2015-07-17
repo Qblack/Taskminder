@@ -4,7 +4,7 @@
 'use strict';
 
 
-var enrollment = angular.module('taskminder.enrollment',[]);
+var enrollment = angular.module('taskowl.enrollment',[]);
 
 enrollment.config(['$routeProvider', function($routeProvider){
     $routeProvider.when('/enroll',{
@@ -175,7 +175,7 @@ enrollment.controller('EnrollCtrl',['$scope', 'Courses','Schools', 'Enrollments'
 
     }]);
 
-angular.module('taskminder.task_table').controller('EnrollModalInstanceCtrl',
+angular.module('taskowl.task_table').controller('EnrollModalInstanceCtrl',
     function ($scope,  $modalInstance, course) {
         $scope.course = course;
 

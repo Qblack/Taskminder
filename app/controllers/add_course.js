@@ -3,7 +3,7 @@
  */
 'use strict';
 
-angular.module('taskminder.addCourse',[])
+angular.module('taskowl.addCourse',[])
     .config(['$routeProvider', function($routeProvider){
         $routeProvider.when('/add_course',{
             templateUrl: 'views/add_course.html',

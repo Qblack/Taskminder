@@ -3,7 +3,7 @@
  */
 'use strict';
 
-angular.module('taskminder.Schools',[]).
+angular.module('taskowl.Schools',[]).
     factory('Schools',['$resource','APIURL', function( $resource, APIURL ){
         var service = {};
 
