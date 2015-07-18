@@ -1,13 +1,10 @@
 <div ng-controller="TaskTableCtrl">
 
     <div class="container container-fluid" >
-        <div ng-include="src='views/edit_task.html'"></div>
-        <div class="row" ng-show="loaded&&tasks.length==0" ng-cloak="">
-            <div class="col-xs-12">
-                <div id="pluswrap" ng-hide="loaded">
-                    <div class="plus">
-                    </div>
-                </div>
+
+        <div class="row" ng-hide="loaded" ng-cloak="">
+            <div class="col-md-1 col-md-offset-5">
+                <i class="fa fa-spinner fa-pulse fa-5x"></i>
             </div>
         </div>
         <div class="row" ng-show="loaded&&tasks.length==0" ng-cloak="">
@@ -19,7 +16,7 @@
                 </div>
             </div>
         </div>
-
+        <div ng-include="src='views/edit_task.html'"></div>
         <div ng-hide="success==null" ng-class="success ? 'alert alert-dismissible alert-success' :'alert alert-dismissible alert-warning' " role="alert">
             {{message}}
             <button ng-show="success" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
