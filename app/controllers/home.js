@@ -24,7 +24,7 @@ angular.module('taskowl.home',['ngRoute', 'ui.bootstrap'])
             Authentication.login(user.login, user.password).$promise.then(
                 function(success){
                     $cookies.put('username',success.username);
-                    $window.sessionStorage.token = success.token;
+                    $window.localStorage.token = success.token;
                     $cookies.put('user_id',success.id);
                     $window.location.href = '#/tasks';
                 },function(err){

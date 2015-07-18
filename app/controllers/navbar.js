@@ -16,7 +16,7 @@ angular.module('taskowl.navbar', [ 'ui.bootstrap'])
 
             var user_id = $cookies.get('user_id');
             Authentication.logout(user_id);
-            $window.sessionStorage.token = null;
+            $window.localStorage.token = null;
             $cookies.remove('username');
             $cookies.remove('user_id');
             $scope.username = null;

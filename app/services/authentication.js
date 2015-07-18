@@ -29,12 +29,12 @@ angular.module('taskowl.Authentication',[]).
         };
 
         service.getToken = function(){
-            return $window.sessionStorage.token;
+            return $window.localStorage.token;
         };
 
         service.saveSession = function(session){
             $cookies.put('username',session.username);
-            $window.sessionStorage.token = session.token;
+            $window.localStorage.token = session.token;
             $cookies.put('user_id',session.id);
         };
 
@@ -42,7 +42,7 @@ angular.module('taskowl.Authentication',[]).
             service.login(login, password).$promise.then(
                 function(success){
                     $cookies.put('username',success.username);
-                    $window.sessionStorage.token = success.token;
+                    $window.localStorage.token = success.token;
                     $cookies.put('user_id',success.id);
                     $window.location.href = '#/tasks';
                 },function(err){
