@@ -14,6 +14,9 @@ angular.module('taskowl.addTask',[])
     }])
     .controller('AddTaskCtrl',['$scope','Tasks','Schools','Enrollments' , 'TYPES','$cookies',function($scope,Tasks, Schools, Enrollments, TYPES, $cookies){
         $scope.task = {};
+        $scope.page_title = 'Create Task';
+        $scope.is_modal = false;
+
         $scope.user_id = $cookies.get('user_id');
         $scope.task.in_class = true;
         $scope.success = null;
@@ -28,8 +31,8 @@ angular.module('taskowl.addTask',[])
 
         $scope.types = TYPES ;
 
-        $scope.add = function(task){
-            task.course_id = task.course;
+        $scope.submitTask = function(task){
+            console.log(task);
             task.complete = false;
             $scope.task = task;
             $scope.task.type = $scope.task.type.trim();
@@ -37,6 +40,7 @@ angular.module('taskowl.addTask',[])
                 function(success) {
                     $scope.success = true;
                     $scope.message = "Task was successfully added.";
+                    $scope.task ={};
                 },function(error) {
                     $scope.message = error.data.message;
                     $scope.success = false;
@@ -66,7 +70,6 @@ angular.module('taskowl.addTask',[])
         $scope.open = function($event) {
             $event.preventDefault();
             $event.stopPropagation();
-
             $scope.opened = true;
         };
 

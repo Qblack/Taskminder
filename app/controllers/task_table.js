@@ -20,6 +20,8 @@ angular.module('taskowl.task_table').controller("TaskTableCtrl",
         $scope.animationsEnabled = true;
         $scope.loaded = false;
         $scope.tasks = null;
+        $scope.success = null;
+        $scope.message = null;
 
             //The shows
         $scope.show = {
@@ -36,10 +38,13 @@ angular.module('taskowl.task_table').controller("TaskTableCtrl",
             $scope.courses=courses;
         });
 
-        Tasks.getTasks($scope.user_id).$promise.then(function(tasks){
-            $scope.tasks=tasks;
-            $scope.loaded = true;
-        });
+        $scope.refreshTasks = function(){
+            Tasks.getTasks($scope.user_id).$promise.then(function(tasks){
+                $scope.tasks=tasks;
+                $scope.loaded = true;
+            });
+        };
+        $scope.refreshTasks();
 
         $scope.getCourseCode = function(course_id){
             //Just iterating for now because I want to only search the user's courses eventually
@@ -87,12 +92,31 @@ angular.module('taskowl.task_table').controller("TaskTableCtrl",
 
         $scope.updateTask =function(task){
           Tasks.updateTask($scope.user_id, task).$promise.then(
-              function(result){
-                  console.log("success");
-            },function(error){
-                console.log(error);
-            }
+              function(success) {
+                  $scope.success = true;
+                  $scope.message = "Task was successfully changed.";
+              },function(error) {
+                  $scope.message = error.data.message;
+                  $scope.success = false;
+              }
           );
+        };
+
+        $scope.addTask =function(task){
+            //TODO remove duplication
+            task.complete = false;
+            $scope.task = task;
+            $scope.task.type = $scope.task.type.trim();
+            Tasks.createTask($scope.user_id,task).$promise.then(
+                function(success) {
+                    $scope.success = true;
+                    $scope.message = "Task was successfully added.";
+                    $scope.refreshTasks();
+                },function(error) {
+                    $scope.message = error.data.message;
+                    $scope.success = false;
+                }
+            );
         };
 
         $scope.completeTask = function(task){
@@ -100,7 +124,7 @@ angular.module('taskowl.task_table').controller("TaskTableCtrl",
             $scope.updateTask(task);
         };
 
-        $scope.openEdit = function (task,size) {
+        $scope.openModal = function (task, title, size) {
 
             var modalInstance = $modal.open({
                 animation: $scope.animationsEnabled,
@@ -113,12 +137,22 @@ angular.module('taskowl.task_table').controller("TaskTableCtrl",
                     },
                     courses: function(){
                         return $scope.courses;
+                    },
+                    page_title: function(){
+                        return title;
                     }
+
                 }
             });
 
-            modalInstance.result.then(function (task) {
-                $scope.updateTask(task);
+            modalInstance.result.then(function (data) {
+
+                if(data.is_new){
+                    $scope.addTask(data.task);
+                }else{
+                    $scope.updateTask(data.task);
+                }
+
             }, function () {
                 $log.info('Modal dismissed at: ' + new Date());
             });
@@ -130,15 +164,29 @@ angular.module('taskowl.task_table').controller("TaskTableCtrl",
 }]);
 
 angular.module('taskowl.task_table').controller('TaskModalInstanceCtrl',
-    function ($scope,  $modalInstance, task, courses, TYPES) {
+    function ($scope,  $modalInstance, task, courses, TYPES, page_title) {
         $scope.types = TYPES;
         $scope.courses = courses;
+        $scope.page_title = page_title;
+        $scope.is_modal = true;
+        $scope.openend = false;
 
-        task.type = task.type.trim();
-        $scope.task = task;
+        if(task != null){
+            $scope.task = task;
+            task.type = task.type.trim();
+            $scope.is_new = false;
+        }else{
+            $scope.task = {
+                in_class : true,
+                due_date : new Date(),
+                due_time : new Date()
+            };
+            $scope.is_new = true;
+        }
 
         $scope.ok = function () {
-            $modalInstance.close($scope.task);
+            var data = {is_new: $scope.is_new, task:$scope.task};
+            $modalInstance.close(data);
         };
 
         $scope.cancel = function () {

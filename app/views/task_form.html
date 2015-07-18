@@ -1,0 +1,102 @@
+<div class="row">
+    <div ng-class="is_modal ? 'col-md-12' : 'col-md-8 col-md-offset-2' ">
+        <div ng-hide="success==null" ng-class="success ? 'alert alert-dismissible alert-success' :'alert alert-dismissible alert-warning' " role="alert">
+            {{message}}
+            <button ng-show="success" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div ng-class="is_modal ? '' : 'panel panel-default' ">
+            <div ng-class="is_modal ? '' : 'panel-body' ">
+                <form class="form" ng-submit="submitTask(task)">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <div class="form-group">
+                                <label for="type">Type:</label>
+                                <select id =  "type"  class="form-control" ng-model="task.type" ng-options="type for type in types" required ng-required="true">
+                                    <option></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="form-group">
+                                <label for="course">Course:</label>
+                                <select id ="course"  class="form-control" ng-model="task.id_course" ng-options="course.id as (course.code + ' '+ course.section) for course in courses">
+                                    <option></option>
+                                </select>
+                                <a href="/#/add_course">Add.</a>
+                                <a href="/#/enroll">Enroll.</a>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                <label for="title">Task Title:</label>
+                                <input type="text" class="form-control" id="title" ng-model="task.title" placeholder="Sir Taskalot" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-7">
+                            <label for="due_date">Due Date</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="task.due_date"
+                                       is-open="$parent.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions"
+                                       ng-required="true" close-text="Close" id="due_date"/>
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                        </span>
+                            </div>
+                        </div>
+                        <div class="col-xs-5">
+                            <label for="in_class">In Class</label>
+                                <input id="in_class" class="form-control checkbox" type="checkbox" ng-model="task.in_class">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-4">
+                            <timepicker ng-show="!task.in_class" id="due_time" ng-model="task.due_time" ng-change="changed()"
+                                        hour-step="hstep" minute-step="mstep" show-meridian="ismeridian">
+                            </timepicker>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pages">What are you to read?</label>
+                        <input type="text" class="form-control" id="pages" ng-model="task.pages" placeholder="Reading Contents">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Describe the task</label>
+                        <textarea class="form-control" id="description" ng-model="task.description" placeholder="Description" rows="4"></textarea>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <label for="weight">Weight:</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="weight" ng-model="task.weight" placeholder="Weight">
+                                <span class="input-group-addon">%</span>
+                            </div>
+                        </div>
+                        <div class="col-xs-9">
+                            <div class="form-group">
+                                <label for="url">Url for more info?</label>
+                                <input type="text" class="form-control" id="url" ng-model="task.url" placeholder="Url">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-9">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="location" ng-model="task.location" placeholder="X marks the spot">
+                            </div>
+                        </div>
+                        <div class="col-xs-3" >
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success form-control">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
