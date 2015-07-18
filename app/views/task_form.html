@@ -4,22 +4,28 @@
             {{message}}
             <button ng-show="success" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         </div>
+        <div class="modal-header" ng-show="is_modal">
+            <h3 class="modal-title">{{ modal_title }} Task</h3>
+        </div>
         <div ng-class="is_modal ? '' : 'panel panel-default' ">
             <div ng-class="is_modal ? '' : 'panel-body' ">
-                <form class="form" ng-submit="submitTask(task)">
+                <form class="form" name="taskForm" ng-submit="submitTask(taskForm.$valid)" novalidate>
+                    <div ng-class="is_modal ? 'modal-body' : '' ">
                     <div class="row">
                         <div class="col-xs-3">
-                            <div class="form-group">
+                            <div class="form-group" ng-class="{ 'has-error' : taskForm.type.$invalid && !taskForm.type.$pristine }">
                                 <label for="type">Type:</label>
-                                <select id =  "type"  class="form-control" ng-model="task.type" ng-options="type for type in types" required ng-required="true">
+                                <select id="type" name="type" class="form-control" ng-model="task.type" ng-options="type for type in types" required ng-required="true">
                                     <option></option>
                                 </select>
+                                <p ng-show="taskForm.type.$invalid && !taskForm.type.$pristine" class="help-block">Type is required.</p>
+
                             </div>
                         </div>
                         <div class="col-xs-3">
-                            <div class="form-group">
+                            <div class="form-group" ng-class="{ 'has-error' : taskForm.course.$invalid && !taskForm.course.$pristine }">
                                 <label for="course">Course:</label>
-                                <select id ="course"  class="form-control" ng-model="task.id_course" ng-options="course.id as (course.code + ' '+ course.section) for course in courses">
+                                <select id ="course" name="course"  class="form-control" ng-model="task.id_course" ng-options="course.id as (course.code + ' '+ course.section) for course in courses">
                                     <option></option>
                                 </select>
                                 <a href="/#/add_course">Add.</a>
@@ -27,73 +33,87 @@
                             </div>
                         </div>
                         <div class="col-xs-6">
-                            <div class="form-group">
+                            <div class="form-group" ng-class="{ 'has-error' : taskForm.title.$invalid && !taskForm.title.$pristine }">
                                 <label for="title">Task Title:</label>
-                                <input type="text" class="form-control" id="title" ng-model="task.title" placeholder="Sir Taskalot" required>
+                                <input type="text" name="title" class="form-control" id="title" ng-model="task.title" placeholder="Sir Taskalot" required ng-maxlength="255">
+                                <p ng-show="taskForm.title.$invalid && !taskForm.title.$pristine" class="help-block">Title is required.</p>
+                                <p ng-show="taskForm.title.$error.maxlength" class="help-block">Cannot be longer than 255 characters.</p>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-7">
                             <label for="due_date">Due Date</label>
-                            <div class="input-group">
+                            <div class="input-group" ng-class="{ 'has-error' : taskForm.due_date.$invalid && !taskForm.due_date.$pristine }">
                                 <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="task.due_date"
                                        is-open="$parent.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions"
-                                       ng-required="true" close-text="Close" id="due_date"/>
+                                       ng-required="true" close-text="Close" id="due_date" name="due_date"/>
                                         <span class="input-group-btn">
                                             <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                                         </span>
                             </div>
+                            <p ng-show="taskForm.due_date.$invalid && !taskForm.due_date.$pristine" class="help-block">Date is required.</p>
                         </div>
                         <div class="col-xs-5">
                             <label for="in_class">In Class</label>
-                                <input id="in_class" class="form-control checkbox" type="checkbox" ng-model="task.in_class">
+                                <input id="in_class" name="in_class" class="form-control checkbox" type="checkbox" ng-model="task.in_class">
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row" ng-class="{ 'has-error' : taskForm.due_time.$invalid && !taskForm.due_time.$pristine }">
                         <div class="col-xs-4">
-                            <timepicker ng-show="!task.in_class" id="due_time" ng-model="task.due_time" ng-change="changed()"
+                            <timepicker ng-show="!task.in_class" id="due_time" name="due_time" ng-model="task.due_time" ng-change="changed()"
                                         hour-step="hstep" minute-step="mstep" show-meridian="ismeridian">
                             </timepicker>
+                            <p ng-show="taskForm.due_time.$invalid && !taskForm.due_time.$pristine" class="help-block">Improper time format.</p>
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" ng-class="{ 'has-error' : taskForm.pages.$invalid && !taskForm.pages.$pristine }">
                         <label for="pages">What are you to read?</label>
-                        <input type="text" class="form-control" id="pages" ng-model="task.pages" placeholder="Reading Contents">
+                        <input type="text" class="form-control" id="pages" name="pages" ng-model="task.pages" placeholder="Reading Contents">
+                        <p ng-show="taskForm.pages.$invalid && !taskForm.pages.$pristine" class="help-block">Bad readings.</p>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" ng-class="{ 'has-error' : taskForm.description.$invalid && !taskForm.description.$pristine }">
                         <label for="description">Describe the task</label>
-                        <textarea class="form-control" id="description" ng-model="task.description" placeholder="Description" rows="4"></textarea>
+                        <textarea class="form-control" id="description" name="description" ng-model="task.description" placeholder="Description" rows="4"></textarea>
+                        <p ng-show="taskForm.description.$invalid && !taskForm.description.$pristine" class="help-block">Bad description.</p>
+
                     </div>
 
                     <div class="row">
                         <div class="col-xs-3">
                             <label for="weight">Weight:</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="weight" ng-model="task.weight" placeholder="Weight">
+                            <div class="input-group" ng-class="{ 'has-error' : taskForm.weight.$invalid && !taskForm.weight.$pristine }">
+                                <input type="text" class="form-control" id="weight" name="weight" ng-model="task.weight" placeholder="Weight" >
                                 <span class="input-group-addon">%</span>
                             </div>
+                            <p ng-show="taskForm.weight.$invalid && !taskForm.weight.$pristine" class="help-block">Bad weight, please use a float.</p>
                         </div>
                         <div class="col-xs-9">
-                            <div class="form-group">
+                            <div class="form-group" ng-class="{ 'has-error' : taskForm.url.$invalid && !taskForm.url.$pristine }">
                                 <label for="url">Url for more info?</label>
-                                <input type="text" class="form-control" id="url" ng-model="task.url" placeholder="Url">
+                                <input type="text" class="form-control" id="url" name="url" ng-model="task.url" placeholder="Url" ng-maxlength="255">
+                                <p ng-show="taskForm.url.$error.maxlength" class="help-block">Cannot be longer than 255 characters.</p>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-9">
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="location" ng-model="task.location" placeholder="X marks the spot">
+                            <div class="form-group" ng-class="{ 'has-error' : taskForm.location.$invalid && !taskForm.location.$pristine }">
+                                <input type="text" class="form-control" id="location" name="location" ng-model="task.location" placeholder="X marks the spot" ng-maxlength="100">
+                                <p ng-show="taskForm.location.$error.maxlength" class="help-block">Cannot be longer than 100 characters.</p>
                             </div>
                         </div>
                         <div class="col-xs-3" >
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-success form-control">Submit</button>
+                            <div class="form-group" ng-hide="is_modal">
+                                <button type="submit" ng-disabled="taskForm.$invalid" class="btn btn-primary form-control">Submit</button>
                             </div>
                         </div>
+                    </div>
+                    <div class="modal-footer" ng-show="is_modal">
+                        <button type="submit" ng-disabled="taskForm.$invalid" class="btn btn-primary">Save</button>
+                        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
                     </div>
                 </form>
             </div>

@@ -31,21 +31,22 @@ angular.module('taskowl.addTask',[])
 
         $scope.types = TYPES ;
 
-        $scope.submitTask = function(task){
-            console.log(task);
-            task.complete = false;
-            $scope.task = task;
-            $scope.task.type = $scope.task.type.trim();
-            Tasks.createTask($scope.user_id,task).$promise.then(
-                function(success) {
-                    $scope.success = true;
-                    $scope.message = "Task was successfully added.";
-                    $scope.task ={};
-                },function(error) {
-                    $scope.message = error.data.message;
-                    $scope.success = false;
-                }
-            );
+        $scope.submitTask = function(isValid){
+            if(isValid){
+                $scope.task.complete = false;
+                $scope.task.type = $scope.task.type.trim();
+                Tasks.createTask($scope.user_id,$scope.task).$promise.then(
+                    function(success) {
+                        $scope.success = true;
+                        $scope.message = "Task was successfully added.";
+                        $scope.task ={};
+                    },function(error) {
+                        $scope.message = error.data.message;
+                        $scope.success = false;
+                    }
+                );
+            }
+
         };
 
         $scope.today = function() {

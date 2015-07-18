@@ -184,9 +184,12 @@ angular.module('taskowl.task_table').controller('TaskModalInstanceCtrl',
             $scope.is_new = true;
         }
 
-        $scope.ok = function () {
-            var data = {is_new: $scope.is_new, task:$scope.task};
-            $modalInstance.close(data);
+        $scope.submitTask = function (isValid) {
+            if(isValid){
+                var data = {is_new: $scope.is_new, task:$scope.task};
+                $modalInstance.close(data);
+            }
+
         };
 
         $scope.cancel = function () {
