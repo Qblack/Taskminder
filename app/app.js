@@ -62,7 +62,7 @@ taskowl.config(['$resourceProvider', function($resourceProvider) {
 }]);
 
 
-//taskowl.constant("APIURL", "https://floating-lowlands-9476.herokuapp.com/api");
-taskowl.constant("APIURL", "http://localhost:1337/api");
+taskowl.constant("APIURL", "https://floating-lowlands-9476.herokuapp.com/api");
+//taskowl.constant("APIURL", "http://localhost:1337/api");
 taskowl.constant("TYPES", ['Reading','Assignment','Test', 'Presentation', 'Meeting', 'Misc']);
 
