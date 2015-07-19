@@ -102,6 +102,25 @@ angular.module('taskowl.task_table').controller("TaskTableCtrl",
           );
         };
 
+        $scope.deleteTask = function(task){
+            Tasks.deleteTask($scope.user_id, task.id).$promise.then(
+                function(success) {
+                    $scope.success = true;
+                    $scope.message = success.message;
+                    $scope.remove(task);
+                },function(error) {
+                    $scope.message = error.data.message;
+                    console.log(error);
+                    $scope.success = false;
+                }
+            );
+        };
+
+        $scope.remove = function(item) {
+            var index = $scope.tasks.indexOf(item);
+            $scope.tasks.splice(index, 1);
+        };
+
         $scope.addTask =function(task){
             //TODO remove duplication
             task.complete = false;

@@ -94,7 +94,7 @@
                                         <i ng-hide="task.complete" class="fa fa-square-o" ng-click="completeTask(task)" tooltip="Mark task as completed"></i>
                                         <i ng-show="task.complete" class="fa fa-check-square-o" ng-click="completeTask(task)"></i>
                                         <i class="fa fa-pencil-square-o" ng-click="openModal(task, 'Edit')" tooltip="Edit Task." ></i>
-                                        <i class="fa fa-trash-o" tooltip="Edit Task. TODO"></i>
+                                        <i class="fa fa-trash-o" ng-click="deleteTask(task);" tooltip="Delete task"></i>
 
                                     </div>
                                     <div class="col-xs-1">
