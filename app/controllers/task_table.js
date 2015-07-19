@@ -14,7 +14,6 @@ angular.module('taskowl.task_table').config(['$routeProvider', function($routePr
 angular.module('taskowl.task_table').controller("TaskTableCtrl",
     ['$scope','Tasks','$cookies','Courses','$modal','$log','Enrollments',
         function($scope,Tasks,$cookies,Courses,$modal,$log, Enrollments){
-        $scope.show_all = false;
         $scope.user_id = $cookies.get('user_id');
         $scope.username = $cookies.get('username');
         $scope.animationsEnabled = true;
@@ -25,12 +24,13 @@ angular.module('taskowl.task_table').controller("TaskTableCtrl",
 
             //The shows
         $scope.show = {
-            assignment:true,
-            test:true,
-            reading:true,
-            presentation: true,
-            misc: true,
-            meeting : true
+            assignment:false,
+            test:false,
+            reading:false,
+            presentation: false,
+            misc: false,
+            meeting : false,
+            show_all : true
         };
 
         $scope.courses = Enrollments.getUserEnrollments($scope.user_id);
@@ -61,33 +61,10 @@ angular.module('taskowl.task_table').controller("TaskTableCtrl",
             return code;
         };
 
-        //TODO Make these all one function
-        $scope.toggleShowAll = function(){
-            $scope.show_all = !$scope.show_all;
-        };
-        $scope.toggleShowAssignments = function(){
-            $scope.show.assignment = !$scope.show.assignment;
-        };
-        $scope.toggleShowTests = function(){
-            $scope.show.test = !$scope.show.test;
-        };
-        $scope.toggleShowReadings = function(){
-            $scope.show.reading = !$scope.show.reading;
-        };
-        $scope.toggleShowPresentations = function(){
-            $scope.show.presentation = !$scope.show.presentation;
-        };
-        $scope.toggleShowMisc = function(){
-            $scope.show.misc = !$scope.show.misc;
-        };
-        $scope.toggleShowMeetings = function(){
-            $scope.show.meeting = !$scope.show.meeting;
-        };
-
 
         $scope.showTask = function(type){
             var string_type =type.trim().toLowerCase().toString();
-            return $scope.show[string_type];
+            return !$scope.show[string_type];
         };
 
         $scope.updateTask =function(task){
@@ -120,6 +97,7 @@ angular.module('taskowl.task_table').controller("TaskTableCtrl",
             var index = $scope.tasks.indexOf(item);
             $scope.tasks.splice(index, 1);
         };
+
 
         $scope.addTask =function(task){
             //TODO remove duplication

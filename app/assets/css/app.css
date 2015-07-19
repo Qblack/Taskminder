@@ -7,6 +7,10 @@
     color: white;
 
 }
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    background-color: #B385AF;
+    color: white;
+}
 
 .navbar-default .navbar-brand{
     color: white;
@@ -62,6 +66,11 @@
     color: white;
 }
 
+.assignment.active {
+    background: #315E08;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.50) inset;
+}
+
 .assignment.panel-default > .panel-heading{
     background-color: #A8B94E;
     color: white;
@@ -85,6 +94,11 @@
     color: white;
 }
 
+.test.active {
+    background: #842141;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.50) inset;
+}
+
 .test.panel-default > .panel-heading{
     background-color: #AA4767;
     color: white;
@@ -104,6 +118,11 @@
     color: white;
 }
 
+.reading.active {
+    background: #518622;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.50) inset;
+}
+
 .reading.panel-default > .panel-heading{
     background-color: #76AB48;
     color: white;
@@ -114,9 +133,23 @@
     color: white;
 }
 
+.reading.panel-default > .panel-collapse  .well-sm{
+    color: #363636;
+}
+
 .presentation{
     background : #3E5280;
     color: white;
+}
+
+.presentation.active {
+    background: #223665;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.50) inset;
+}
+
+.presentation.focus {
+    background: #223665;
+    color: #E86900;
 }
 
 .presentation.panel-default > .panel-heading{
@@ -136,6 +169,11 @@
 .meeting{
     background : #307373;
     color: white;
+}
+
+.meeting.active {
+    background: #165959;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.50) inset;
 }
 
 .meeting.panel-default > .panel-heading{
@@ -158,6 +196,11 @@
     color: white;
 }
 
+.misc.active {
+    background: #955626;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.50) inset;
+}
+
 .misc.panel-default > .panel-heading{
     background-color: #BF8050;
     color: white;
@@ -172,6 +215,16 @@
     color: #363636;
 }
 
+.show-complete{
+    background : darkcyan;
+    color: white;
+}
+
+
+.show-complete.active {
+    background: #006F6F;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.50) inset;
+}
 
 
 .btn-logout {
@@ -180,13 +233,9 @@
 }
 
 
-.reading.panel-default > .panel-collapse  .well-sm{
-    color: #363636;
-}
-.show-complete{
-    background : darkcyan;
-    color: white;
-}
+
+
+
 
 .scrollable.nav {height:300px; width:100%;}
 .scrollable.nav {overflow:hidden; overflow-y:scroll;}
