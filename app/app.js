@@ -36,7 +36,7 @@ taskowl.factory('authInterceptor', function($rootScope, $q, $window){
    return {
        request: function(config){
            config.headers = config.headers || {};
-           if ($window.localStorage.token){
+           if ($window.localStorage.token && $window.localStorage.token!=null){
                config.headers.Authorization='Bearer ' + $window.localStorage.token;
            }
            return config;
