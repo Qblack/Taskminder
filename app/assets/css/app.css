@@ -5,6 +5,74 @@
     background-size: 100% 100%;
 }
 
+.background {
+    background-image: url('../img/background.jpg');
+    height: 100%;
+    width: 100%;
+}
+
+.form-sign-up {
+    float:right;
+    width:700px;
+}
+
+.fade-box {
+    border: 3px black;
+    border-radius: 5px;
+    padding: 2px;
+    background: black;
+    opacity: 0.57;
+    color: white;
+}
+
+.fade-box .form-inline .form-control{
+    color: white;
+    background: black;
+    opacity: 0.57;
+}
+
+.welcome {
+    color : white;
+    font-family: 'Roboto', sans-serif;
+}
+
+.welcome h1 {
+    color :white;
+}
+
+.arrow_box {
+    position: relative;
+    width: 50%;
+    font-size: large;
+    background: #000000;
+    border: 3px solid black;
+    opacity: .57;
+}
+.arrow_box:after, .arrow_box:before {
+    top: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.arrow_box:after {
+    border-color: rgba(0, 0, 0, 0);
+    border-top-color: #000000;
+    border-width: 10px;
+    margin-left: -10px;
+}
+.arrow_box:before {
+    border-color: rgba(0, 0, 0, 0);
+    border-top-color: black;
+    border-width: 14px;
+    margin-left: -14px;
+}
+
+
 .navbar-default{
     background-color :#7A3575;
     border-color: #7A3575 ;
