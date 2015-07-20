@@ -173,6 +173,7 @@ angular.module('taskowl.task_table').controller('TaskModalInstanceCtrl',
         $scope.page_title = page_title;
         $scope.is_modal = true;
         $scope.openend = false;
+        $scope.minDate = new Date(0);
 
         if(task != null){
             $scope.task = task;
