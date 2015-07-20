@@ -198,7 +198,13 @@ angular.module('taskowl.task_table').controller('EnrollModalInstanceCtrl',
         );
 
         $scope.ok = function () {
-            $modalInstance.close({course:course,tasks:$scope.tasks});
+            var keep_tasks = [];
+            $scope.tasks.forEach(function(task){
+               if(task.keep==true){
+                   keep_tasks.push(task);
+               }
+            });
+            $modalInstance.close({course:course,tasks:keep_tasks});
         };
 
         $scope.cancel = function () {

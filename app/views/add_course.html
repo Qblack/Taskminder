@@ -2,63 +2,89 @@
 
     <div class="container container-fluid" >
         <div class="row">
-            <div class="col-md-6">
-                <h1>Register a new course here.</h1>
+            <div class="col-xs-8 col-xs-offset-2">
+                <h1>New Course</h1>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6 col-md-offset-3">
+            <div class="col-xs-8 col-xs-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div ng-hide="success==null" ng-class="success ? 'alert alert-dismissible alert-success' :'alert alert-dismissible alert-warning' " role="alert">
                             {{message}}
                             <button ng-show="success" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         </div>
-
-                        <form ng-submit="add(course)">
+                        <form class="form-horizontal" ng-submit="add(course)">
                             <div class="form-group">
-                                <label class="control-label" for="name">What course will you be taking?</label>
-                                <input type="text" class="form-control" id="name" ng-model="course.name" placeholder="{{fake_course}}" required autofocus>
+                                <label class="control-label col-sm-2" for="name">Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="name" ng-model="course.name" placeholder="{{fake_course}}" required autofocus>
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label" for="description">Describe what you will be learning</label>
-                                <input type="text" class="form-control" id="description" ng-model="course.description" placeholder="Course Description" required>
+                                <label class="control-label col-sm-2 " for="description">Description</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control " id="description" ng-model="course.description" placeholder="Course Description" required>
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label" for="school">What school are you taking the course from?</label>
-                                <select id ="school"  class="form-control" ng-model="course.id_school" ng-options="school.id as school.name for school in schools" required></select>
-                                School not there? <a href="/#/add_school">Add it.</a>
+                                <label class="control-label col-sm-2 " for="school">School</label>
+                                <div class="col-sm-9">
+                                    <select id ="school"  class="form-control " ng-model="course.id_school" ng-options="school.id as school.name for school in schools" required></select>
+                                    School not there? <a href="/#/add_school">Add it.</a>
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label" for="code">What is the course code?</label>
-                                <input type="text" class="form-control" id="code" ng-model="course.code" placeholder="Up Up Down Down Left Right Left Right B A Start" required>
+                                <label class="control-label col-sm-2 " for="code">Course Code</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control " id="code" ng-model="course.code" placeholder="Up Up Down Down Left Right Left Right B A Start" required>
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label" for="professor">Who will be teaching you?</label>
-                                <input type="text" class="form-control" id="professor" ng-model="course.professor" placeholder="{{fake_professor}}" required>
+                                <label class="control-label col-sm-2 " for="professor">Professor</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control " id="professor" ng-model="course.professor" placeholder="{{fake_professor}}" required>
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label" for="section">What is your course section?</label>
-                                    <input type="text" class="form-control" id="section" ng-model="course.section" placeholder="Section">
+                                <label class="control-label col-sm-2 " for="section">Section</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control " id="section" ng-model="course.section" placeholder="Section">
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label" for="year">What year is the course in?</label>
-                                <input type="text" class="form-control" id="year" ng-model="course.year" placeholder="Year">
+                                <label class="control-label col-sm-2 " for="year">Year</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control " id="year" ng-model="course.year" placeholder="Year">
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label" for="semester">What semester is this course in</label>
-                                <input type="text" class="form-control" id="semester" ng-model="course.semester" placeholder="Semester">
+                                <label class="control-label col-sm-2 " for="semester">Semester</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control " id="semester" ng-model="course.semester" placeholder="Semester">
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label" for="syllabus">Link to the syllabus?</label>
-                                    <input type="text" class="form-control" id="syllabus" ng-model="course.syllabus" placeholder="Silly Bus?">
+                                <label class="control-label col-sm-2 " for="syllabus">Syllabus Link</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control " id="syllabus" ng-model="course.syllabus" placeholder="Silly Bus?">
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label" for="website">Course Website</label>
-                                <input type="text" class="form-control" id="website" ng-model="course.website" placeholder="www.imaurl.com">
+                                <label class="control-label col-sm-2 " for="website">Course Website</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control " id="website" ng-model="course.website" placeholder="www.imaurl.com">
+                                </div>
                             </div>
-
-                            <button type="submit" class="btn btn-default pull-right" >Add Course</button>
+                            <div class="form-group">
+                                    <label for="enroll" class="control-label col-sm-2 ">Enroll</label>
+                                    <div class="col-sm-2">
+                                        <input id="enroll" name="enroll" type="checkbox" class="checkbox form-control " ng-model="enroll"/>
+                                    </div>
+                                    <div class="col-sm-6 col-sm-offset-2">
+                                        <button type="submit" class="btn btn-primary pull-right" >Add Course</button>
+                                    </div>
+                            </div>
                         </form>
                     </div>
                 </div>

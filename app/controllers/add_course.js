@@ -11,16 +11,20 @@ angular.module('taskowl.addCourse',[])
         });
 
     }])
-    .controller('AddCourseCtrl',['$scope','Schools','Courses',function($scope,Schools,Courses){
+    .controller('AddCourseCtrl',['$scope','Schools','Courses','Enrollments', '$cookies',function($scope,Schools,Courses,Enrollments, $cookies){
         $scope.course = {};
         $scope.success = null;
         $scope.message = null;
+        $scope.enroll = true;
+        $scope.userId = $cookies.get('user_id');
 
         $scope.add = function(course){
             Courses.createCourse(course).$promise.then(
-                function(courseId) {
+                function(course) {
                     $scope.success = true;
                     $scope.message = $scope.course.name + " has been successfully added";
+                    var enrollment = Enrollments.formatEnrollment($scope.userId,course);
+                    Enrollments.createEnrollment(enrollment);
                     $scope.course = {};
                 }, function(error){
                     $scope.success = false;

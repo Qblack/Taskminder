@@ -36,6 +36,10 @@ angular.module('taskowl.Enrollments',[]).
             return Enrollments.query();
         };
 
+        service.formatEnrollment = function(userId, course){
+            return {id_user: userId, id_course: course.id};
+        };
+
         service.createEnrollment = function(enroll){
             return Enrollments.create(enroll);
         };
