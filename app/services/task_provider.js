@@ -13,8 +13,7 @@ angular.module('taskowl.Tasks',[]).
                 {
                     'get': {
                         method: 'GET',
-                        isArray:true,
-
+                        isArray:true
                     },
                     'delete': {method: 'DELETE'},
                     'update': {method: 'PUT'},
@@ -32,7 +31,11 @@ angular.module('taskowl.Tasks',[]).
             };
 
             service.createTask = function(userId, task){
-                return Tasks.create({userId:userId},task);
+                return Tasks.create({userId:userId},[task]);
+            };
+
+            service.createTasks = function(userId, tasks){
+                return Tasks.create({userId:userId},tasks);
             };
 
             service.deleteTask = function(userId, taskId){

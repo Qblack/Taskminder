@@ -72,6 +72,9 @@ angular.module('taskowl.task_table').controller("TaskTableCtrl",
               function(success) {
                   $scope.success = true;
                   $scope.message = "Task was successfully changed.";
+                  if(task.share==true){
+                      Courses.createMasterTask(task.id_course, task);
+                  }
               },function(error) {
                   $scope.message = error.data.message;
                   $scope.success = false;
@@ -108,6 +111,9 @@ angular.module('taskowl.task_table').controller("TaskTableCtrl",
                 function(success) {
                     $scope.success = true;
                     $scope.message = "Task was successfully added.";
+                    if(task.share==true){
+                        Courses.createMasterTask(task.id_course, task);
+                    }
                     $scope.refreshTasks();
                 },function(error) {
                     $scope.message = error.data.message;

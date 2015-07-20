@@ -101,11 +101,20 @@
                     <div class="row">
                         <div class="col-xs-9">
                             <div class="form-group" ng-class="{ 'has-error' : taskForm.location.$invalid && !taskForm.location.$pristine }">
+                                <label for="location" class="control-label">Location</label>
                                 <input type="text" class="form-control" id="location" name="location" ng-model="task.location" placeholder="X marks the spot" ng-maxlength="100">
                                 <p ng-show="taskForm.location.$error.maxlength" class="help-block">Cannot be longer than 100 characters.</p>
                             </div>
                         </div>
                         <div class="col-xs-3" >
+                            <div class="form-group">
+                                <label for="share" class="control-label">Share this task?</label>
+                                <input class="form-control checkbox" type="checkbox" name="share" id="share" ng-model="task.share"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3 col-xs-offset-9" >
                             <div class="form-group" ng-hide="is_modal">
                                 <button type="submit" ng-disabled="taskForm.$invalid" class="btn btn-primary form-control">Submit</button>
                             </div>

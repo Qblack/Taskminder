@@ -13,8 +13,8 @@ enrollment.config(['$routeProvider', function($routeProvider){
     });
 }]);
 
-enrollment.controller('EnrollCtrl',['$scope', 'Courses','Schools', 'Enrollments', '$modal', '$cookies',
-    function($scope, Courses, Schools, Enrollments, $modal, $cookies){
+enrollment.controller('EnrollCtrl',['$scope', 'Courses','Schools', 'Enrollments', '$modal', '$cookies', 'Tasks',
+    function($scope, Courses, Schools, Enrollments, $modal, $cookies, Tasks){
         $scope.years = [];
         $scope.semesters = [];
         $scope.sections = [];
@@ -23,6 +23,7 @@ enrollment.controller('EnrollCtrl',['$scope', 'Courses','Schools', 'Enrollments'
         $scope.course = null;
         $scope.success = null;
         $scope.message = null;
+        $scope.userId = $cookies.get('user_id');
 
         $scope.id_school = null;
         $scope.year = null;
@@ -131,10 +132,10 @@ enrollment.controller('EnrollCtrl',['$scope', 'Courses','Schools', 'Enrollments'
         });
 
 
-        $scope.enroll = function(course){
+        $scope.enroll = function(course, tasks){
             var enrollment = {};
             enrollment.id_course = course.id;
-            enrollment.id_user = $cookies.get('user_id');
+            enrollment.id_user = $scope.userId;
             Enrollments.createEnrollment(enrollment).$promise.then(
                 function(success){
                     $scope.success = true;
@@ -145,6 +146,7 @@ enrollment.controller('EnrollCtrl',['$scope', 'Courses','Schools', 'Enrollments'
                     $scope.semester = null;
                     $scope.section = null;
                     $scope.course_name = null;
+                    Tasks.createTasks($scope.userId,tasks);
                 }, function(error){
                     $scope.success = false;
                     $scope.message = "Could not enroll in course, already enrolled";
@@ -156,7 +158,7 @@ enrollment.controller('EnrollCtrl',['$scope', 'Courses','Schools', 'Enrollments'
 
             var modalInstance = $modal.open({
                 animation: $scope.animationsEnabled,
-                templateUrl: 'course.html',
+                templateUrl: 'course_modal.html',
                 controller: 'EnrollModalInstanceCtrl',
                 size:size,
                 resolve: {
@@ -166,8 +168,8 @@ enrollment.controller('EnrollCtrl',['$scope', 'Courses','Schools', 'Enrollments'
                 }
             });
 
-            modalInstance.result.then(function (course) {
-                $scope.enroll(course);
+            modalInstance.result.then(function (data) {
+                $scope.enroll(data.course, data.tasks);
             });
         };
 
@@ -176,11 +178,27 @@ enrollment.controller('EnrollCtrl',['$scope', 'Courses','Schools', 'Enrollments'
     }]);
 
 angular.module('taskowl.task_table').controller('EnrollModalInstanceCtrl',
-    function ($scope,  $modalInstance, course) {
+    function ($scope,  $modalInstance, course, Courses) {
         $scope.course = course;
+        $scope.loaded = false;
+
+        $scope.tasks = Courses.getCourseTasks(course.id);
+        $scope.tasks.$promise.then(
+            function(tasks){
+                tasks.forEach(function(task){
+                    if(task.type!='meeting'){
+                        task.keep = true;
+                    }
+                });
+                $scope.tasks = tasks;
+                $scope.loaded = true;
+            }, function(error){
+                console.log(error);
+            }
+        );
 
         $scope.ok = function () {
-            $modalInstance.close(course);
+            $modalInstance.close({course:course,tasks:$scope.tasks});
         };
 
         $scope.cancel = function () {

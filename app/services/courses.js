@@ -17,6 +17,15 @@ angular.module('taskowl.Courses',[]).
             }
         );
 
+        var CourseTasks =  $resource(APIURL+'/courses/:id/tasks',
+            {id:'@id'},
+            {
+                'get': {method: 'GET', isArray:true},
+                'create': {method: 'POST'}
+            }
+        );
+
+
         service.getCourse = function(courseId){
             return Courses.get({id:courseId});
         };
@@ -25,8 +34,16 @@ angular.module('taskowl.Courses',[]).
             return Courses.query();
         };
 
+        service.getCourseTasks = function(courseId){
+            return CourseTasks.get({id:courseId});
+        };
+
         service.createCourse = function(course){
             return Courses.create(course);
+        };
+
+        service.createMasterTask = function(courseId,task){
+            return CourseTasks.create({id:courseId},task);
         };
 
         service.deleteCourse = function(courseId){

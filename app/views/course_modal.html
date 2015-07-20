@@ -1,4 +1,4 @@
-<script type="text/ng-template" id="course.html">
+<script type="text/ng-template" id="course_modal.html">
     <div class="modal-header">
         <h3 class="modal-title"> {{ course.code }}: Is this your course?</h3>
     </div>
@@ -11,8 +11,10 @@
                 <p>{{ course.description }}</p>
             </div>
         </div>
+        <div ng-include="src='views/master_tasks.html'"></div>
+
         <div class="modal-footer">
-            <button class="btn btn-primary" ng-click="ok()">Enroll</button>
+            <button ng-class="loaded? 'btn btn-primary' : 'btn btn-primary disabled'" ng-click="ok()">Enroll</button>
             <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
         </div>
     </div>

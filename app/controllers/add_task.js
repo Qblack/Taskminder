@@ -12,7 +12,7 @@ angular.module('taskowl.addTask',[])
         });
 
     }])
-    .controller('AddTaskCtrl',['$scope','Tasks','Schools','Enrollments' , 'TYPES','$cookies',function($scope,Tasks, Schools, Enrollments, TYPES, $cookies){
+    .controller('AddTaskCtrl',['$scope','Tasks','Schools','Enrollments' , 'TYPES','$cookies', 'Courses',function($scope,Tasks, Schools, Enrollments, TYPES, $cookies, Courses){
         $scope.task = {};
         $scope.page_title = 'Create Task';
         $scope.is_modal = false;
@@ -39,6 +39,9 @@ angular.module('taskowl.addTask',[])
                     function(success) {
                         $scope.success = true;
                         $scope.message = "Task was successfully added.";
+                        if($scope.task.share==true){
+                            Courses.createMasterTask($scope.task.id_course, $scope.task);
+                        }
                         $scope.task ={};
                     },function(error) {
                         $scope.message = error.data.message;
