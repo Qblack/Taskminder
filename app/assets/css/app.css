@@ -1,19 +1,19 @@
 /*http://paletton.com/#uid=74V0u0kiynZ8mBFdmtcnMiLtndb*/
 
+
 .welcome-panel {
     background-image: url('../img/Gylfie-welcome.png');
     background-size: 100% 100%;
 }
 
 .background {
-    background-image: url('../img/background.jpg');
-    height: 100%;
-    width: 100%;
-}
-
-.form-sign-up {
-    float:right;
-    width:700px;
+    background: url('../img/background.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height : 100%;
+    min-width : 100%;
 }
 
 .fade-box {
@@ -21,7 +21,7 @@
     border-radius: 5px;
     padding: 2px;
     background: black;
-    opacity: 0.57;
+    opacity: 0.8;
     color: white;
 }
 
@@ -30,10 +30,14 @@
     background: black;
     opacity: 0.57;
 }
+.form-inline .form-group {
+    margin:5px 7px;
+}
 
 .welcome {
     color : white;
     font-family: 'Roboto', sans-serif;
+    padding-top: 1vw;
 }
 
 .welcome h1 {
@@ -70,6 +74,20 @@
     border-top-color: black;
     border-width: 14px;
     margin-left: -14px;
+}
+
+.light-robot {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    font-size: 2vw;
+}
+
+.bold-robot{
+    color:white;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: large;
+    padding-top: 10px;
 }
 
 

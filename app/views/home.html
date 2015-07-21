@@ -1,33 +1,33 @@
 <div ng-controller="HomeCtrl">
     <div role="main">
-        <header class="bs-header welcome" id="welcome">
-            <div class="container">
+        <header class="bs-header welcome background" id="welcome">
+            <div class="container container-fluid">
                 <div class="row">
-                    <div class="col-xs-4">
+                    <div class="col-xs-6" ng-class="isLoggedIn ? 'col-xs-offset-3' : '' ">
                         <div class="arrow_box center-block text-center">
-                            <p>Hoot Hoot, I'm Gylfie!
+                            <p>Hoot Hoot, I'm Gylfie!<br>
                                 Welcome to TaskOwl</p>
                         </div>
                         <img src="assets/img/SayHigh-Gylfie.png" height="100%" width="100%"/>
                     </div>
-                    <div class="col-xs-7">
-                        <h1>A linear view of what to do</h1>
+                    <div class="col-xs-6" ng-hide="isLoggedIn">
+                        <div  class="light-robot">A linear view of what to do</div>
                         <div class="fade-box">
-                            <form class="form-inline" enctype="application/x-www-form-urlencoded">
+                            <form class="form-inline fade-box" enctype="application/x-www-form-urlencoded">
                                 <div class="{{ success }}">
                                     <div class="form-group">
-                                        <label for="login">Email: </label>
-                                        <input type="email" class="form-control" id="login" ng-model="user.login" required autofocus>
+                                        <label for="login" class="control-label">Email: </label>
+                                        <input type="email" class="form-control input-sm" id="login" ng-model="user.login" required autofocus>
                                     </div>
                                     <div class="form-group">
-                                        <label for="password">Password:</label>
-                                        <input type="password" class="form-control" id="password" ng-model="user.password" required>
+                                        <label for="password" class="control-label">Password:</label>
+                                        <input type="password" class="form-control input-sm" id="password" ng-model="user.password" required>
                                     </div>
                                     <button type="submit" class="btn btn-success btn-sm" ng-click="login(user)">Login</button>
                                 </div>
                             </form>
                         </div>
-                        <p class="text-right">Need an account? <a href="#/signup">Register here</a> in seconds.</p>
+                        <p class="text-right bold-robot">Need an account? <a href="#/signup">Register here</a> in seconds.</p>
                     </div>
                 </div>
             </div>
@@ -36,49 +36,3 @@
 </div>
 
 
-
-    <!--<div class="container" ng-hide="isLoggedIn">-->
-            <!--<div class="row">-->
-                    <!--<div class="col-md-5 col-md-offset-7 col-xs-12">-->
-                        <!--<div class="panel panel-default">-->
-                            <!--<div class="panel-body">-->
-                                <!--<div   ng-show="message"  class="alert alert-danger alert-dismissible" role="alert">-->
-                                    <!--<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
-                                    <!--{{ message }}-->
-                                <!--</div>-->
-                                <!--<form class="form-horizontal" enctype="application/x-www-form-urlencoded">-->
-                                    <!--<div class="{{ success }}">-->
-                                        <!--<div class="form-group">-->
-                                            <!--<label for="login">Email address</label>-->
-                                            <!--<input type="email" class="form-control" id="login" ng-model="user.login" placeholder="Enter email" required autofocus>-->
-                                        <!--</div>-->
-                                        <!--<div class="form-group">-->
-                                            <!--<label for="password">Password</label>-->
-                                            <!--<input type="password" class="form-control" id="password" ng-model="user.password" placeholder="Password" required>-->
-                                        <!--</div>-->
-                                    <!--</div>-->
-                                    <!--<button type="submit" class="btn btn-default pull-right" ng-click="login(user)">Sign In</button>-->
-
-                                <!--</form>-->
-                                <!--<p>No account? <a href="#/signup">Sign Up</a></p>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-               <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-    <!--<div class="container container-fluid" ng-show="isLoggedIn">-->
-        <!--<div class="row">-->
-            <!--<div class="col-md-12">-->
-                <!--<div class="jumbotron">-->
-                    <!--<div class="page-header">-->
-                        <!--<h1>Welcome to TaskOwl</h1>-->
-                        <!--<h2><small>A linear view of what to do.</small></h2>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-
-    <!--</div>-->
-<!--</div>-->
