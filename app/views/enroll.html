@@ -2,20 +2,21 @@
     <div ng-include="src='views/course_modal.html'"></div>
     <div class="container container-fluid">
         <div class="row">
-            <div class="col-xs-10 col-xs-offset-1">
+            <div class="col-xs-6 col-xs-offset-3">
                     <h1>Enroll in a course.</h1>
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-10 col-xs-offset-1">
+            <div class="col-xs-6 col-xs-offset-3">
                 <div ng-hide="success==null" ng-class="success ? 'alert alert-success' : 'alert alert-warning'" role="alert">
                     <strong>{{ message }}</strong>
                 </div>
             </div>
         </div>
 
+
         <div class="row">
-            <div class="col-xs-10 col-xs-offset-1">
+            <div class="col-xs-6 col-xs-offset-3">
                 <form class="form">
                     <div class="form-group">
                         <label for="school" class="control-label">Please Select a school</label>
