@@ -14,7 +14,7 @@
                     <div class="row">
                         <div class="col-xs-3">
                             <div class="form-group" ng-class="{ 'has-error' : taskForm.type.$invalid && !taskForm.type.$pristine }">
-                                <label for="type">Type:</label>
+                                <label for="type">Type:*</label>
                                 <select id="type" name="type" class="form-control" ng-model="task.type" ng-options="type for type in types" required ng-required="true">
                                     <option></option>
                                 </select>
@@ -34,7 +34,7 @@
                         </div>
                         <div class="col-xs-6">
                             <div class="form-group" ng-class="{ 'has-error' : taskForm.title.$invalid && !taskForm.title.$pristine }">
-                                <label for="title">Task Title:</label>
+                                <label for="title">Task Title:*</label>
                                 <input type="text" name="title" class="form-control" id="title" ng-model="task.title" placeholder="Sir Taskalot" required ng-maxlength="255">
                                 <p ng-show="taskForm.title.$invalid && !taskForm.title.$pristine" class="help-block">Title is required.</p>
                                 <p ng-show="taskForm.title.$error.maxlength" class="help-block">Cannot be longer than 255 characters.</p>
@@ -43,7 +43,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-7">
-                            <label for="due_date">Due Date</label>
+                            <label for="due_date">Due Date*</label>
                             <div class="input-group" ng-class="{ 'has-error' : taskForm.due_date.$invalid && !taskForm.due_date.$pristine }">
                                 <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="task.due_date"
                                        is-open="$parent.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions"
