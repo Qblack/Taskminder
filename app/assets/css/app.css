@@ -117,7 +117,7 @@ body.HomeCtrl {
 
 }
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-    background-color: #363636;
+    background-color: rgba(95, 25, 97, 0.45);
     color: white;
 }
 
