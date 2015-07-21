@@ -20,15 +20,14 @@
     border: 3px black;
     border-radius: 5px;
     padding: 2px;
-    background: black;
-    opacity: 0.8;
+    background: rgba(0, 0, 0, 0.43);
     color: white;
 }
 
+
 .fade-box .form-inline .form-control{
     color: white;
-    background: black;
-    opacity: 0.57;
+    background: rgba(0, 0, 0, 0.43);
 }
 .form-inline .form-group {
     margin:5px 7px;
@@ -79,7 +78,13 @@
 .light-robot {
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
-    font-size: 2vw;
+    font-size: 45px;
+    padding-top:2%;
+}
+
+.light-robot-sm {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
 }
 
 .bold-robot{
@@ -137,7 +142,6 @@
 .navbar, .navbar-inverse, .navbar-fixed-top, .navbar-static {
     padding: 5px;
     color: white;
-
     border-color: transparent;
     -webkit-box-shadow: 0px 1px 7px 0px rgba(0, 0, 0, 0.55);
     -moz-box-shadow: 0px 1px 7px 0px rgba(0, 0, 0, 0.55);
@@ -321,10 +325,6 @@
     background: #7E9125;
     color:white;
 }
-
-
-
-
 
 
 .scrollable.nav {height:300px; width:100%;}
