@@ -51,6 +51,12 @@ taskowl.factory('authInterceptor', function($rootScope, $q, $window){
    };
 });
 
+taskowl.run(function($rootScope) {
+    $rootScope.$on('$routeChangeSuccess', function(ev,data) {
+        if (data.$$route && data.$$route.controller)
+            $rootScope.controller = data.$$route.controller;
+    })
+});
 
 taskowl.config(function ($httpProvider) {
     $httpProvider.interceptors.push('authInterceptor');

@@ -1,5 +1,16 @@
 /*http://paletton.com/#uid=74V0u0kiynZ8mBFdmtcnMiLtndb*/
 
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+body.HomeCtrl {
+    background: url('../img/background.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
 
 .welcome-panel {
     background-image: url('../img/Gylfie-welcome.png');
@@ -48,6 +59,7 @@
     background: #000000;
     border: 3px solid black;
     opacity: .57;
+    color:white;
 }
 .arrow_box:after, .arrow_box:before {
     top: 100%;
