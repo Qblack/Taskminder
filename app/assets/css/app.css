@@ -4,6 +4,10 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+body h1, h2, h3, h4, h5, h6{
+    color: #965998;
+}
+
 body.HomeCtrl {
     background: url('../img/background.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -156,9 +160,11 @@ body.HomeCtrl {
     -webkit-box-shadow: 0px 1px 7px 0px rgba(0, 0, 0, 0.55);
     -moz-box-shadow: 0px 1px 7px 0px rgba(0, 0, 0, 0.55);
     box-shadow: 0px 1px 7px 0px rgba(0, 0, 0, 0.55);
-    background-image: linear-gradient(#0F0110,#0F0110 43%,#0F0110);
+    background-image: none;
     background-repeat: no-repeat;
+    background-color: rgba(95, 25, 97, 0.55);
 }
+
 
 
 .navbar-inverse .navbar-nav > li > a {
@@ -333,7 +339,7 @@ body.HomeCtrl {
 
 
 .btn-logout {
-    background: #7E9125;
+    background: #cf7894;
     color:white;
 }
 
