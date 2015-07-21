@@ -37,7 +37,6 @@ body.HomeCtrl {
     color: white;
 }
 
-
 .fade-box .form-inline .form-control{
     color: white;
     background: rgba(0, 0, 0, 0.43);
@@ -45,6 +44,9 @@ body.HomeCtrl {
 .form-inline .form-group {
     margin:5px 7px;
 }
+
+
+
 
 .welcome {
     color : white;
