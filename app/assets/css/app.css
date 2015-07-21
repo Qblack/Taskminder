@@ -16,14 +16,6 @@ body.HomeCtrl {
     background-size: cover;
 }
 
-.jumbotron{
-    background: #b789b9;
-}
-
-.jumbotron  h1, h2, h3, h4, h5, h6{
-    color : white;
-}
-
 .welcome-panel {
     background-image: url('../img/Gylfie-welcome.png');
     background-size: 100% 100%;
@@ -116,7 +108,12 @@ body.HomeCtrl {
     font-size: large;
     padding-top: 10px;
 }
-
+.bold-purple-robot{
+    color:#965998;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: large;
+}
 
 .navbar-default{
     background-color : rgba(0, 0, 0, 0.43);
